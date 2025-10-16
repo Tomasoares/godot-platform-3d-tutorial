@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc4d0ps8auti3"]
+
+[ext_resource type="Texture2D" uid="uid://cs3s0uhstrk1" path="res://Assets/Sprites/icon.svg" id="1_tr34o"]
+
+[sub_resource type="GDScript" id="GDScript_hn12h"]
+script/source = "extends Sprite3D
+
+const SPEED = 2
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	rotate_y(deg_to_rad(SPEED))
+"
+
+[node name="ExtraLifeIcon" type="Sprite3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+texture = ExtResource("1_tr34o")
+script = SubResource("GDScript_hn12h")

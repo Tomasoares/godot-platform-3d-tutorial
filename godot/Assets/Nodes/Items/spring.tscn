@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=3 uid="uid://oyjtmrxq83ge"]
+
+[ext_resource type="Material" uid="uid://dmrbf5bjmv0lw" path="res://Assets/Resources/spring-material.tres" id="1_f7qdp"]
+[ext_resource type="Script" uid="uid://bmmj1dkjudda8" path="res://Assets/Nodes/Items/spring.gd" id="1_mh5ov"]
+[ext_resource type="Texture2D" uid="uid://do47egodq7qpl" path="res://Assets/Models/world2-blocks_PavingStones146_1K-JPG_Roughness.png" id="3_80pdv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_80pdv"]
+
+[sub_resource type="Animation" id="Animation_bxwea"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Render:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.009161353, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Render:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.833, 1, 0.833)]
+}
+
+[sub_resource type="Animation" id="Animation_xlsdy"]
+resource_name = "push"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Render:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.010072633, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.009161353, 0), Vector3(0, 0.31434292, 0), Vector3(0, 0.009161353, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Render:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.009981888, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.833, 1, 0.833), Vector3(1, 1.2, 1), Vector3(0.833, 1, 0.833)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gw0ad"]
+_data = {
+&"RESET": SubResource("Animation_bxwea"),
+&"push": SubResource("Animation_xlsdy")
+}
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gb6og"]
+material = ExtResource("1_f7qdp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkr1n"]
+albedo_color = Color(0.68760175, 0.35766777, 0.08000744, 1)
+metallic = 1.0
+metallic_specular = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8p3yc"]
+material = SubResource("StandardMaterial3D_xkr1n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mh5ov"]
+albedo_color = Color(0.44, 0.35200003, 0, 1)
+albedo_texture = ExtResource("3_80pdv")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_80pdv"]
+material = SubResource("StandardMaterial3D_mh5ov")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mh5ov"]
+height = 2.4833984
+
+[node name="Spring" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_mh5ov")
+
+[node name="ActionArea" type="Area3D" parent="."]
+collision_layer = 128
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActionArea"]
+transform = Transform3D(0.7, 0, 0, 0, 0.2, 0, 0, 0, 0.7, 0, 0.042145163, 0)
+shape = SubResource("CylinderShape3D_80pdv")
+debug_color = Color(0.9937001, 0, 0.24056926, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gw0ad")
+}
+
+[node name="Render" type="Node3D" parent="."]
+transform = Transform3D(0.833, 0, 0, 0, 1, 0, 0, 0, 0.833, 0, 0.009161353, 0)
+
+[node name="SurfaceMesh" type="MeshInstance3D" parent="Render"]
+transform = Transform3D(1.002744, 0, 0, 0, -0.06011342, 0, 0, 0, 1.002744, 0, 0.1006805, 0)
+mesh = SubResource("CylinderMesh_gb6og")
+skeleton = NodePath("../..")
+
+[node name="ConnectorMesh" type="MeshInstance3D" parent="Render"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.13730578, 0)
+mesh = SubResource("CylinderMesh_8p3yc")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Render"]
+transform = Transform3D(0.7500001, 0, 0, 0, 0.045780167, 0, 0, 0, 0.7500001, 0, 0.12814666, 0)
+mesh = SubResource("CylinderMesh_80pdv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 128
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.081, 0, -9.616505e-08, 0, -0.228, 0, 9.450402e-08, 0, 1.1, 0, -0.0874894, 0)
+shape = SubResource("CylinderShape3D_mh5ov")
+
+[connection signal="area_entered" from="ActionArea" to="." method="_on_action_area_area_entered"]

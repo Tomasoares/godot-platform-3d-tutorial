@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b7th1cwknk74g"
+path="res://.godot/imported/Deadwing - The Early Years - 01 Frozen Fields.mp3-155f1676df6f0962fc32ef58d3e8b4e5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Deadwing - The Early Years - 01 Frozen Fields.mp3"
+dest_files=["res://.godot/imported/Deadwing - The Early Years - 01 Frozen Fields.mp3-155f1676df6f0962fc32ef58d3e8b4e5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://1epsq3ydcvri"]
+
+[ext_resource type="Texture2D" uid="uid://dvfk282w8jrj7" path="res://Assets/Models/world2-blocks_PavingStones146_1K-JPG_NormalGL.png" id="1_cyi1o"]
+[ext_resource type="Texture2D" uid="uid://do47egodq7qpl" path="res://Assets/Models/world2-blocks_PavingStones146_1K-JPG_Roughness.png" id="2_k3pub"]
+
+[resource]
+albedo_color = Color(0.71135163, 0.2266281, 0.22320557, 1)
+albedo_texture = ExtResource("1_cyi1o")
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("2_k3pub")

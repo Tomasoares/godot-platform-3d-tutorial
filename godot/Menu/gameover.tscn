@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://dujnesa4yffs6"]
+
+[ext_resource type="Script" uid="uid://baibf40yaaetp" path="res://Menu/gameover.gd" id="1_63m4x"]
+[ext_resource type="FontFile" uid="uid://h8berclpli6i" path="res://Assets/Fonts/SyneMono-Regular.ttf" id="1_pq57r"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_63m4x")
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+offset_left = -18.0
+offset_top = -10.0
+offset_right = 1156.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="GameOverText" type="Label" parent="."]
+offset_left = 306.0
+offset_top = 156.0
+offset_right = 801.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("1_pq57r")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoToMenu" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 339.0
+offset_right = 844.6962
+offset_bottom = 452.28516
+scale = Vector2(0.6686435, 0.626737)
+theme_override_fonts/font = ExtResource("1_pq57r")
+theme_override_font_sizes/font_size = 50
+text = "Go to Menu"
+
+[node name="Exit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 428.00003
+offset_right = 848.6963
+offset_bottom = 541.28516
+scale = Vector2(0.6686435, 0.626737)
+theme_override_fonts/font = ExtResource("1_pq57r")
+theme_override_font_sizes/font_size = 50
+text = "Exit
+"
+
+[connection signal="pressed" from="Control/GoToMenu" to="." method="_on_go_to_menu_pressed"]
+[connection signal="pressed" from="Control/Exit" to="." method="_on_exit_pressed"]

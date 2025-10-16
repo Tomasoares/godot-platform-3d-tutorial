@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://branci5rcxxkr"]
+
+[ext_resource type="Script" uid="uid://dejhl5h8neeq5" path="res://Menu/thanksforplaying.gd" id="1_akhda"]
+[ext_resource type="FontFile" uid="uid://h8berclpli6i" path="res://Assets/Fonts/SyneMono-Regular.ttf" id="2_inule"]
+
+[node name="CreditsScreen" type="Node2D"]
+script = ExtResource("1_akhda")
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+offset_left = -18.0
+offset_top = -10.0
+offset_right = 1156.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="ThanksForPlayingText" type="Label" parent="."]
+offset_left = 58.0
+offset_top = 184.0
+offset_right = 1103.0
+offset_bottom = 307.0
+theme_override_fonts/font = ExtResource("2_inule")
+theme_override_font_sizes/font_size = 100
+text = "Thanks for playing!"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoToMenu" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 339.0
+offset_right = 844.6962
+offset_bottom = 452.28516
+scale = Vector2(0.6686435, 0.626737)
+theme_override_fonts/font = ExtResource("2_inule")
+theme_override_font_sizes/font_size = 50
+text = "Go to Menu"
+
+[node name="Exit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 428.00003
+offset_right = 848.6963
+offset_bottom = 541.28516
+scale = Vector2(0.6686435, 0.626737)
+theme_override_fonts/font = ExtResource("2_inule")
+theme_override_font_sizes/font_size = 50
+text = "Exit
+"
+
+[connection signal="pressed" from="Control/GoToMenu" to="." method="_on_go_to_menu_pressed"]
+[connection signal="pressed" from="Control/Exit" to="." method="_on_exit_pressed"]

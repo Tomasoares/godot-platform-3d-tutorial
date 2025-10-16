@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://df8ky1p113mmd"]
+
+[ext_resource type="FontFile" uid="uid://h8berclpli6i" path="res://Assets/Fonts/SyneMono-Regular.ttf" id="1_2o2cr"]
+[ext_resource type="Script" uid="uid://de2eikwxanvux" path="res://Assets/Nodes/Hud/win_screen.gd" id="1_elfod"]
+
+[sub_resource type="Theme" id="Theme_elfod"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofoio"]
+bg_color = Color(0.15, 0.15, 0.15, 0.69411767)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="WinScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_elfod")
+
+[node name="WinWindow" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 198.0
+offset_right = 652.7313
+offset_bottom = 386.2351
+scale = Vector2(1.3118641, 1.3600012)
+theme = SubResource("Theme_elfod")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ofoio")
+
+[node name="LevelClearedText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 260.0
+offset_right = 784.0
+offset_bottom = 299.0
+theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2o2cr")
+theme_override_font_sizes/font_size = 32
+text = "Level Cleared!"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 327.0
+offset_right = 559.0
+offset_bottom = 370.0
+theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2o2cr")
+theme_override_font_sizes/font_size = 24
+text = "Time:"
+horizontal_alignment = 1
+
+[node name="MinuteLabel" type="Label" parent="TimeLabel"]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 124.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2o2cr")
+theme_override_font_sizes/font_size = 24
+text = "00"
+horizontal_alignment = 1
+
+[node name="DivisorLabel" type="Label" parent="TimeLabel"]
+layout_mode = 0
+offset_left = 79.0
+offset_right = 145.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2o2cr")
+theme_override_font_sizes/font_size = 24
+text = ":"
+horizontal_alignment = 1
+
+[node name="SecondLabel" type="Label" parent="TimeLabel"]
+layout_mode = 0
+offset_left = 99.0
+offset_right = 165.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_2o2cr")
+theme_override_font_sizes/font_size = 24
+text = "00"
+horizontal_alignment = 1
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 395.0
+offset_right = 612.0
+offset_bottom = 426.0
+theme_override_colors/font_color = Color(0.92, 0.86740667, 0.4692, 1)
+theme_override_fonts/font = ExtResource("1_2o2cr")
+text = "Next"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

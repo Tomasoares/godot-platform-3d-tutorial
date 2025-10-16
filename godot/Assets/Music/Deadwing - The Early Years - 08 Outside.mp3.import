@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1vhbc28fs5ju"
+path="res://.godot/imported/Deadwing - The Early Years - 08 Outside.mp3-7655acf1d041ce4f85a3e9632c3af111.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Deadwing - The Early Years - 08 Outside.mp3"
+dest_files=["res://.godot/imported/Deadwing - The Early Years - 08 Outside.mp3-7655acf1d041ce4f85a3e9632c3af111.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

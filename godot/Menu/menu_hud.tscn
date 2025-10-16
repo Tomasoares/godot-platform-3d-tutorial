@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://l8qmpssrgkpn"]
+
+[ext_resource type="FontFile" uid="uid://h8berclpli6i" path="res://Assets/Fonts/SyneMono-Regular.ttf" id="1_56xlw"]
+[ext_resource type="Script" uid="uid://dh3kd0aotu24h" path="res://Menu/menu_hud.gd" id="1_lxy1q"]
+[ext_resource type="Script" uid="uid://h2m2rof2cyaq" path="res://Assets/Nodes/Systems/button_sound_manager.gd" id="3_hf6yx"]
+
+[node name="MenuHud" type="Node2D"]
+script = ExtResource("1_lxy1q")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 60.000004
+offset_top = 87.00001
+offset_right = 830.0
+offset_bottom = 172.00002
+rotation = -0.04909213
+scale = Vector2(1, 0.9086758)
+theme_override_colors/font_color = Color(1, 0.8188188, 0.37374562, 1)
+theme_override_colors/font_shadow_color = Color(0.22866665, 0, 0.28, 0.7647059)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("1_56xlw")
+theme_override_font_sizes/font_size = 90
+text = "3D PLATAFORMER GAME!"
+
+[node name="Credits" type="Label" parent="."]
+offset_left = 766.00006
+offset_top = 153.0
+offset_right = 1072.706
+offset_bottom = 262.0
+rotation = -0.04909213
+scale = Vector2(1, 0.9086758)
+theme_override_colors/font_color = Color(1, 0.8188188, 0.37374562, 1)
+theme_override_colors/font_shadow_color = Color(0.22866665, 0, 0.28, 0.7647059)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("1_56xlw")
+theme_override_font_sizes/font_size = 30
+text = "tutorial by BornCG"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Play" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 794.0
+offset_top = 294.0
+offset_right = 987.0
+offset_bottom = 353.0
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("1_56xlw")
+theme_override_font_sizes/font_size = 32
+text = "Play!"
+
+[node name="Exit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 795.0
+offset_top = 377.0
+offset_right = 988.0
+offset_bottom = 436.0
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("1_56xlw")
+theme_override_font_sizes/font_size = 32
+text = "Exit
+"
+
+[node name="ButtonSoundManager" type="Node" parent="." node_paths=PackedStringArray("parent_scene")]
+script = ExtResource("3_hf6yx")
+parent_scene = NodePath("..")
+metadata/_custom_type_script = "uid://h2m2rof2cyaq"
+
+[connection signal="pressed" from="Control/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/Exit" to="." method="_on_exit_pressed"]

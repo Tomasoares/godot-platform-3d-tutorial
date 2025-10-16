@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://brt7iomeg6l42"]
+
+[ext_resource type="Texture2D" uid="uid://bk0xfu7hsrlj0" path="res://Assets/Icons/coin.png" id="1_wutq6"]
+[ext_resource type="FontFile" uid="uid://h8berclpli6i" path="res://Assets/Fonts/SyneMono-Regular.ttf" id="2_nkoe6"]
+
+[sub_resource type="GDScript" id="GDScript_nkoe6"]
+script/source = "extends \"res://Assets/Nodes/hud_manager.gd\"
+
+var expandedCoinText := false
+
+func updateInitialValues(totalCoin: int):
+	$AllCoins.text = str(totalCoin)
+
+func updateCoinCount(amount: int):
+	$CurrentCoins.text = str(amount) + \"/\"
+	
+	if amount >= 10 and not expandedCoinText:
+		expandedCoinText = true
+		$AllCoins.position.x += 20
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pk3k"]
+bg_color = Color(0, 0, 0, 0.49019608)
+corner_radius_bottom_right = 30
+
+[node name="HUD" type="CanvasLayer"]
+script = SubResource("GDScript_nkoe6")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 22.0
+offset_top = 18.0
+offset_right = 198.0
+offset_bottom = 58.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4pk3k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 19.0
+offset_right = 92.0
+offset_bottom = 73.0
+texture = ExtResource("1_wutq6")
+expand_mode = 1
+
+[node name="CurrentCoins" type="Label" parent="."]
+offset_left = 84.0
+offset_top = 15.0
+offset_right = 125.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0.8621649, 0.72704875, 0.3426831, 1)
+theme_override_colors/font_shadow_color = Color(0.28, 0.1995, 0.07, 0.78039217)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_nkoe6")
+theme_override_font_sizes/font_size = 37
+text = "0/"
+
+[node name="AllCoins" type="Label" parent="."]
+offset_left = 122.0
+offset_top = 23.0
+offset_right = 140.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.8621649, 0.72704875, 0.3426831, 1)
+theme_override_colors/font_shadow_color = Color(0.28, 0.1995, 0.07, 0.78039217)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_nkoe6")
+theme_override_font_sizes/font_size = 29
+text = "6"

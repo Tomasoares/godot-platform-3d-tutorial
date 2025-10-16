@@ -1,0 +1,138 @@
+[gd_scene load_steps=20 format=3 uid="uid://cxvjkoodhdvo"]
+
+[ext_resource type="Script" uid="uid://vbmx6r4gw8jt" path="res://Assets/Global/sound_manager.gd" id="1_7f0rr"]
+[ext_resource type="AudioStream" uid="uid://b7th1cwknk74g" path="res://Assets/Music/Deadwing - The Early Years - 01 Frozen Fields.mp3" id="2_b1yh0"]
+[ext_resource type="AudioStream" uid="uid://ct4r83t6byqls" path="res://Assets/SFX/146726__leszek_szary__jumping.wav" id="2_yk7y6"]
+[ext_resource type="AudioStream" uid="uid://crnur5a0kuw2k" path="res://Assets/Music/Deadwing - The Early Years - 02 Ganymade.mp3" id="3_ngc8a"]
+[ext_resource type="AudioStream" uid="uid://ce8vdwbj8oq34" path="res://Assets/SFX/529953__beetlemuse__footsteps-penguin-snow-globe-game.wav" id="3_yk7y6"]
+[ext_resource type="AudioStream" uid="uid://fwbgck7qieis" path="res://Assets/Music/Deadwing - The Early Years - 06 Underground Shelter.mp3" id="4_5wftm"]
+[ext_resource type="AudioStream" uid="uid://bp5qs3hbm6oer" path="res://Assets/SFX/350875__cabled_mess__coin_c_07.wav" id="4_fhg1w"]
+[ext_resource type="AudioStream" uid="uid://cyggsexqiayan" path="res://Assets/Music/Tomás Soares - Exomoon soundtrack - 07 Shrine.mp3" id="4_i0mlu"]
+[ext_resource type="AudioStream" uid="uid://vrmgoygl8qf2" path="res://Assets/SFX/515619__mrickey13__splatsquish-2.wav" id="5_7t6lv"]
+[ext_resource type="AudioStream" uid="uid://k6ql41kk4dsx" path="res://Assets/Music/Tomás Soares - Exomoon soundtrack - 16 Intermission.mp3" id="5_x27u4"]
+[ext_resource type="AudioStream" uid="uid://cjtjbv3hau202" path="res://Assets/SFX/519005__someguy22__8-bit-cannon-fire.wav" id="5_yr7r6"]
+[ext_resource type="AudioStream" uid="uid://cs8fbi0o150v2" path="res://Assets/SFX/523655__lilmati__powerup-09.wav" id="6_nmjpm"]
+[ext_resource type="AudioStream" uid="uid://bjg7wh7o8mxbs" path="res://Assets/SFX/561496__mattruthsound__cardboard-box-small-dropped-onto-soft-surface-punch-hit_96khz_mono_zoomh4n_nt5.wav" id="10_rg3t4"]
+[ext_resource type="AudioStream" uid="uid://dvvv5ljy58khn" path="res://Assets/SFX/539678__jhyland__upgrade-sfx.wav" id="13_awgwk"]
+[ext_resource type="AudioStream" uid="uid://bc1b4j5632gu0" path="res://Assets/SFX/531851__tissman__menu-click-2.ogg" id="14_adbvs"]
+[ext_resource type="AudioStream" uid="uid://cb7jk11htuvr2" path="res://Assets/SFX/404150__lilmati__select-denied-01.wav" id="15_wpi5b"]
+[ext_resource type="AudioStream" uid="uid://b72n1ktydvu18" path="res://Assets/SFX/515830__newlocknew__ui_1-sweet-sawsytrusarpegiomultiprocessingrsmpl.wav" id="16_wpi5b"]
+[ext_resource type="AudioStream" uid="uid://bo8oe3fec8c7k" path="res://Assets/SFX/521268__mrthenoronha__jump-spring-8-bit.wav" id="17_wpi5b"]
+[ext_resource type="AudioStream" uid="uid://bjis0yar2pb4e" path="res://Assets/SFX/523649__lilmati__powerup-07.wav" id="18_5yafv"]
+
+[node name="SoundManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7f0rr")
+
+[node name="Music" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="Music" groups=["music"]]
+stream = ExtResource("2_b1yh0")
+volume_db = -10.0
+pitch_scale = 1.1
+
+[node name="LevelGanymade" type="AudioStreamPlayer" parent="Music" groups=["music"]]
+process_mode = 3
+stream = ExtResource("3_ngc8a")
+volume_db = -10.0
+
+[node name="LevelUndergroundShelter" type="AudioStreamPlayer" parent="Music" groups=["music"]]
+process_mode = 3
+stream = ExtResource("4_5wftm")
+volume_db = -8.0
+
+[node name="GameOver" type="AudioStreamPlayer" parent="Music" groups=["music"]]
+process_mode = 3
+stream = ExtResource("4_i0mlu")
+volume_db = -10.0
+
+[node name="Victory" type="AudioStreamPlayer" parent="Music" groups=["music"]]
+process_mode = 3
+stream = ExtResource("5_x27u4")
+volume_db = -10.0
+
+[node name="Sound" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerJump" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("2_yk7y6")
+volume_db = -16.0
+pitch_scale = 1.2
+
+[node name="WalkSound" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("3_yk7y6")
+volume_db = -10.0
+
+[node name="RunSound" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("3_yk7y6")
+volume_db = -10.0
+pitch_scale = 1.5
+
+[node name="CoinCollect" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("4_fhg1w")
+volume_db = -10.0
+pitch_scale = 1.5
+
+[node name="SquishEnemy" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("5_7t6lv")
+volume_db = -10.0
+pitch_scale = 0.53
+
+[node name="ExtraLifeCollect" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("6_nmjpm")
+volume_db = -20.0
+pitch_scale = 0.53
+
+[node name="PlayerDie" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("5_yr7r6")
+volume_db = -17.0
+pitch_scale = 1.5
+
+[node name="BoxKick" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("10_rg3t4")
+volume_db = -17.0
+pitch_scale = 1.5
+
+[node name="LevelCleared" type="AudioStreamPlayer" parent="Sound"]
+process_mode = 3
+stream = ExtResource("13_awgwk")
+volume_db = -6.066
+pitch_scale = 1.5
+
+[node name="ButtonSelected" type="AudioStreamPlayer" parent="Sound"]
+process_mode = 3
+stream = ExtResource("14_adbvs")
+volume_db = -15.0
+pitch_scale = 0.99
+
+[node name="ButtonGoBack" type="AudioStreamPlayer" parent="Sound"]
+process_mode = 3
+stream = ExtResource("15_wpi5b")
+volume_db = -9.0
+pitch_scale = 1.5
+
+[node name="ButtonApply" type="AudioStreamPlayer" parent="Sound"]
+process_mode = 3
+stream = ExtResource("16_wpi5b")
+volume_db = -15.0
+pitch_scale = 2.0
+
+[node name="BumpSound" type="AudioStreamPlayer" parent="Sound"]
+process_mode = 3
+stream = ExtResource("17_wpi5b")
+volume_db = -22.0
+pitch_scale = 1.31
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="Sound"]
+process_mode = 3
+stream = ExtResource("18_5yafv")
+volume_db = -28.0
+pitch_scale = 1.73

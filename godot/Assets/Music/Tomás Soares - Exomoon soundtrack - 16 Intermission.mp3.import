@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://k6ql41kk4dsx"
+path="res://.godot/imported/Tomás Soares - Exomoon soundtrack - 16 Intermission.mp3-facd519969a75ff618747c656b0697c9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Tomás Soares - Exomoon soundtrack - 16 Intermission.mp3"
+dest_files=["res://.godot/imported/Tomás Soares - Exomoon soundtrack - 16 Intermission.mp3-facd519969a75ff618747c656b0697c9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

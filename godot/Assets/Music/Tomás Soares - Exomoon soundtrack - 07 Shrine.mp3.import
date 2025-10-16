@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cyggsexqiayan"
+path="res://.godot/imported/Tomás Soares - Exomoon soundtrack - 07 Shrine.mp3-a4ed97752a6bf8be0137ba890fea25d3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Tomás Soares - Exomoon soundtrack - 07 Shrine.mp3"
+dest_files=["res://.godot/imported/Tomás Soares - Exomoon soundtrack - 07 Shrine.mp3-a4ed97752a6bf8be0137ba890fea25d3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

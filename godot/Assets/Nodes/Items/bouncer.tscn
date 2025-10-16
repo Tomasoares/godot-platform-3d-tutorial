@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://bn5x0dpimm08j"]
+
+[ext_resource type="Script" uid="uid://blbbyge5hxqry" path="res://Assets/Nodes/Items/bouncer.gd" id="1_b6wxl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yokbh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yokbh"]
+transparency = 1
+blend_mode = 4
+cull_mode = 1
+depth_draw_mode = 1
+albedo_color = Color(1, 0.96933335, 0.53999996, 0.65882355)
+metallic = 1.0
+metallic_specular = 0.0
+roughness_texture = SubResource("CanvasTexture_yokbh")
+
+[sub_resource type="SphereMesh" id="SphereMesh_b6wxl"]
+material = SubResource("StandardMaterial3D_yokbh")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mtxh6"]
+
+[sub_resource type="Animation" id="Animation_b6wxl"]
+resource_name = "bounce"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10012585, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.4775224, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10012585, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1.4, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mtxh6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cv4ks"]
+_data = {
+&"RESET": SubResource("Animation_mtxh6"),
+&"bounce": SubResource("Animation_b6wxl")
+}
+
+[node name="Bouncer" type="Node3D"]
+script = ExtResource("1_b6wxl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_b6wxl")
+
+[node name="ActionArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActionArea"]
+shape = SubResource("SphereShape3D_mtxh6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cv4ks")
+}
+
+[connection signal="area_entered" from="ActionArea" to="." method="_on_action_area_area_entered"]

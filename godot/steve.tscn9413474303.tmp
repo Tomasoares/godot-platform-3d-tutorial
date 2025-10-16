@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsgyd0clyb5ja"]
+
+[sub_resource type="GDScript" id="GDScript_hdy3p"]
+script/source = "extends CharacterBody3D
+
+
+const SPEED = 10
+const JUMP_VELOCITY = 18
+
+func _physics_process(delta: float) -> void:
+	manage_camera_input(delta)
+
+	var input_dir := Input.get_vector(\"move_left\", \"move_right\", \"move_up\", \"move_down\")
+	rotate_body(delta, input_dir)
+	move(delta, input_dir)
+	
+
+func manage_camera_input(delta: float) -> void:
+	if Input.is_action_just_pressed(\"cam_left\"):
+		$CameraController.rotate_y(deg_to_rad(-30))
+	if Input.is_action_just_pressed(\"cam_right\"):
+		$CameraController.rotate_y(deg_to_rad(30))
+
+func move(delta: float, input_dir: Vector2) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		
+	var direction: Vector3 = ($CameraController.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = lerp(velocity.x, direction.x * SPEED, 0.1)
+		velocity.z = lerp(velocity.z, direction.z * SPEED, 0.1)
+	else:
+		velocity.x = lerp(velocity.x, move_toward(velocity.x, 0, SPEED), 0.2)
+		velocity.z = lerp(velocity.z, move_toward(velocity.z, 0, SPEED), 0.2)
+
+	move_and_slide()
+	
+	$CameraController.position = lerp($CameraController.position, position, 0.1)
+
+func rotate_body(delta: float, input_dir: Vector2) -> void:
+	var character_is_moving := input_dir != Vector2(0, 0)
+	if character_is_moving:
+		var inputPressedAngle := rad_to_deg(input_dir.angle()) + 90
+		$Body.rotation_degrees.y = lerp($Body.rotation_degrees.y, $CameraController.rotation_degrees.y - inputPressedAngle, 0.25)
+	
+	#align character with irregular floor	
+	if is_on_floor():
+		align_character_with_floor_inclination($RayCast3D.get_collision_normal())
+	else:
+		align_character_with_floor_inclination(Vector3.UP)
+		
+func align_character_with_floor_inclination(inclination: Vector3):
+		var newAlignment := global_transform
+		newAlignment.basis.y = inclination
+		newAlignment.basis.x = -newAlignment.basis.z.cross(inclination)
+		newAlignment.basis = newAlignment.basis.orthonormalized()
+		global_transform = global_transform.interpolate_with(newAlignment, 0.3)
+		
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdy3p"]
+albedo_color = Color(0.2752, 0.64, 0.2752, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hdy3p"]
+material = SubResource("StandardMaterial3D_hdy3p")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hdy3p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bh3ft"]
+
+[node name="Steve" type="CharacterBody3D"]
+script = SubResource("GDScript_hdy3p")
+metadata/_edit_group_ = true
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hdy3p")
+
+[node name="Face" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.6, 0, 0, 0, 4.5885424e-09, -0.6, 0, -0.104973614, -2.6226834e-08, 0, 0.3612244, -0.5248681)
+mesh = SubResource("CylinderMesh_hdy3p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bh3ft")
+
+[node name="CameraController" type="Node3D" parent="."]
+top_level = true
+
+[node name="CameraTarget" type="Node3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.9865636, 0.16337763, 0, -0.16337763, 0.9865636, 0, 2.5307703, 4.352802)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget"]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
