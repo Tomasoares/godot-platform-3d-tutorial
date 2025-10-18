@@ -59,6 +59,10 @@ func play_level_underground() -> void:
 func play_level_outside() -> void:
 	if !$Music/LevelOutside.playing:
 		$Music/LevelOutside.play()
+
+func play_level_inferno() -> void:
+	if !$Music/Levelinferno.playing:
+		$Music/Levelinferno.play()
 		
 func stop_level_ganymade() -> void:
 	$Music/LevelGanymade.stop()

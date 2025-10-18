@@ -15,5 +15,5 @@ func lose_try() -> void:
 		Global.game_over()
 
 func add_extra_try() -> void:
-	Global.current_lives += 1
+	Global.current_lives += 2
 	hud.update_lives(Global.current_lives)

@@ -38,6 +38,7 @@ var initial_scene_order := [
 	"res://Levels/level_4.tscn",
 	"res://Levels/level_5.tscn",
 	"res://Levels/level_6.tscn",
+	"res://Levels/level_7.tscn",
 ]
 
 var current_scene_order := []

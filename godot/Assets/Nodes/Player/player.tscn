@@ -1077,8 +1077,7 @@ _data = {
 &"waveArm": SubResource("Animation_rbsk5")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bv27b"]
-size = Vector3(1, 2.0585938, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wk7ca"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vj5hy"]
 
@@ -1226,7 +1225,7 @@ libraries = {
 }
 
 [node name="AttackCollision" type="Area3D" parent="Character" node_paths=PackedStringArray("player")]
-transform = Transform3D(1.4665927, 0, 0, 0, 0.23084393, 0, 0, 0, 2.244272, 0, -0.073922396, 0)
+transform = Transform3D(1.199939, 0, 0, 0, 0.23084393, 0, 0, 0, 1.7945764, 0, -0.073922396, 0)
 collision_layer = 64
 collision_mask = 32
 collision_priority = 2.0
@@ -1235,7 +1234,7 @@ player = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Character/AttackCollision"]
 transform = Transform3D(0.45000002, 0, 0, 0, 1.6143104, 0, 0, 0, 0.3, 0, -1.2298656, 0)
-shape = SubResource("BoxShape3D_bv27b")
+shape = SubResource("CapsuleShape3D_wk7ca")
 debug_color = Color(0.96662074, 0, 0.4823736, 0.41960785)
 
 [node name="JumpCollision" type="Area3D" parent="Character" node_paths=PackedStringArray("player")]

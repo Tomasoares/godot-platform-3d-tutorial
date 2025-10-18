@@ -26,6 +26,7 @@ func add_gravity(delta: float):
 		velocity.y += get_gravity().y * delta
 		
 func interrupt_behaviours() -> void:
+	set_collision_layer_value(Global.Layers.ENEMY, false)
 	$AttackArea.set_collision_layer_value(Global.Layers.ENEMY, false)
 	$AttackArea.set_collision_layer_value(Global.Layers.ENEMY_WEAKNESS, false)
 	$AttackArea.set_collision_mask_value(Global.Layers.PLAYER, false)

@@ -322,7 +322,7 @@ autoplay = true
 max_distance = 20.0
 
 [node name="VulnerableArea" type="Area3D" parent="." node_paths=PackedStringArray("enemy", "animation_script")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.34253836, 0)
+transform = Transform3D(1.4358428, 0, 0, 0, 1.2, 0, 0, 0, 1.415925, 0, 0.34253836, 0)
 collision_layer = 32
 collision_mask = 64
 collision_priority = 2.0

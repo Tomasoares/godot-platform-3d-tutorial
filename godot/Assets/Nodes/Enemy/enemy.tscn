@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	
 func interrupt_behaviours() -> void:
 	$MovementScript.stand_still()
+	set_collision_layer_value(Global.Layers.ENEMY, false)
 	$AttackArea.set_collision_mask_value(Global.Layers.PLAYER, false)
 	$VulnerableArea.set_collision_layer_value(Global.Layers.ENEMY_WEAKNESS, false)
 	$VulnerableArea.set_collision_mask_value(Global.Layers.PLAYER_ATTACK, false)
@@ -257,6 +258,7 @@ shape = SubResource("CylinderShape3D_jiocw")
 debug_color = Color(0.9610434, 1.1551381e-06, 0.51534206, 0.41960785)
 
 [node name="VulnerableArea" type="Area3D" parent="." node_paths=PackedStringArray("enemy", "animation_script")]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1.2, -0.017876863, -0.057264328, -0.035753816)
 collision_layer = 32
 collision_mask = 64
 collision_priority = 2.0

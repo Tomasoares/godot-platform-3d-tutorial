@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxvjkoodhdvo"]
+[gd_scene load_steps=22 format=3 uid="uid://cxvjkoodhdvo"]
 
 [ext_resource type="Script" uid="uid://vbmx6r4gw8jt" path="res://Assets/Global/sound_manager.gd" id="1_7f0rr"]
 [ext_resource type="AudioStream" uid="uid://b7th1cwknk74g" path="res://Assets/Music/Deadwing - The Early Years - 01 Frozen Fields.mp3" id="2_b1yh0"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://1vhbc28fs5ju" path="res://Assets/Music/Deadwing - The Early Years - 08 Outside.mp3" id="5_leryb"]
 [ext_resource type="AudioStream" uid="uid://k6ql41kk4dsx" path="res://Assets/Music/Tomás Soares - Exomoon soundtrack - 16 Intermission.mp3" id="5_x27u4"]
 [ext_resource type="AudioStream" uid="uid://cjtjbv3hau202" path="res://Assets/SFX/519005__someguy22__8-bit-cannon-fire.wav" id="5_yr7r6"]
+[ext_resource type="AudioStream" uid="uid://c3mity43vc5r4" path="res://Assets/Music/Deadwing - The Early Years - 03 Inferno.mp3" id="6_nctci"]
 [ext_resource type="AudioStream" uid="uid://cs8fbi0o150v2" path="res://Assets/SFX/523655__lilmati__powerup-09.wav" id="6_nmjpm"]
 [ext_resource type="AudioStream" uid="uid://bjg7wh7o8mxbs" path="res://Assets/SFX/561496__mattruthsound__cardboard-box-small-dropped-onto-soft-surface-punch-hit_96khz_mono_zoomh4n_nt5.wav" id="10_rg3t4"]
 [ext_resource type="AudioStream" uid="uid://dvvv5ljy58khn" path="res://Assets/SFX/539678__jhyland__upgrade-sfx.wav" id="13_awgwk"]
@@ -51,6 +52,11 @@ volume_db = -8.0
 [node name="LevelOutside" type="AudioStreamPlayer" parent="Music" groups=["music"]]
 process_mode = 3
 stream = ExtResource("5_leryb")
+volume_db = -8.0
+
+[node name="Levelinferno" type="AudioStreamPlayer" parent="Music" groups=["music"]]
+process_mode = 3
+stream = ExtResource("6_nctci")
 volume_db = -8.0
 
 [node name="GameOver" type="AudioStreamPlayer" parent="Music" groups=["music"]]
