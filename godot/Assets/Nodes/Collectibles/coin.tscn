@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://s0o1es323d32"]
 
 [ext_resource type="ArrayMesh" uid="uid://cecgrwx86rx1w" path="res://Assets/Models/coin.res" id="1_d5gmh"]
-[ext_resource type="Script" uid="uid://dmgvblmgryl87" path="res://Assets/Nodes/Items/magnet_area.gd" id="2_cvw10"]
+[ext_resource type="Script" uid="uid://dmgvblmgryl87" path="res://Assets/Nodes/Collectibles/magnet_area.gd" id="2_cvw10"]
 
 [sub_resource type="GDScript" id="GDScript_6qpsl"]
 script/source = "class_name Coin

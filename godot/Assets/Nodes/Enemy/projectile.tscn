@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://dxyukkc1p255b"]
+
+[ext_resource type="Script" uid="uid://bfq762jb551tk" path="res://Assets/Nodes/Enemy/projectile.gd" id="1_ojuoi"]
+[ext_resource type="Script" uid="uid://bhmdnih4miefx" path="res://Assets/Nodes/Enemy/kill_area.gd" id="2_of0h3"]
+[ext_resource type="Script" uid="uid://c7gs28iqdnjjp" path="res://Assets/Nodes/Enemy/hitbox.gd" id="3_16kx5"]
+
+[sub_resource type="Animation" id="Animation_of0h3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.88, 0, 0, 0.7529412)]
+}
+
+[sub_resource type="Animation" id="Animation_ojuoi"]
+resource_name = "disappear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.88, 0, 0, 0.7529412), Color(0.88, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16kx5"]
+_data = {
+&"RESET": SubResource("Animation_of0h3"),
+&"disappear": SubResource("Animation_ojuoi")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_of0h3"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.88, 0, 0, 0.7529412)
+
+[sub_resource type="SphereMesh" id="SphereMesh_16kx5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_of0h3")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ojuoi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_of0h3"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_ojuoi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_16kx5")
+}
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_16kx5")
+
+[node name="TimeToLiveTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="KillArea" type="Area3D" parent="."]
+collision_layer = 0
+script = ExtResource("2_of0h3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillArea"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+shape = SubResource("SphereShape3D_ojuoi")
+
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("projectile")]
+collision_layer = 0
+collision_mask = 142
+script = ExtResource("3_16kx5")
+projectile = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_of0h3")
+
+[connection signal="timeout" from="TimeToLiveTimer" to="." method="_on_time_to_live_timer_timeout"]
+[connection signal="body_entered" from="KillArea" to="KillArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]

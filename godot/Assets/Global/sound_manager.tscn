@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxvjkoodhdvo"]
+[gd_scene load_steps=21 format=3 uid="uid://cxvjkoodhdvo"]
 
 [ext_resource type="Script" uid="uid://vbmx6r4gw8jt" path="res://Assets/Global/sound_manager.gd" id="1_7f0rr"]
 [ext_resource type="AudioStream" uid="uid://b7th1cwknk74g" path="res://Assets/Music/Deadwing - The Early Years - 01 Frozen Fields.mp3" id="2_b1yh0"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bp5qs3hbm6oer" path="res://Assets/SFX/350875__cabled_mess__coin_c_07.wav" id="4_fhg1w"]
 [ext_resource type="AudioStream" uid="uid://cyggsexqiayan" path="res://Assets/Music/Tomás Soares - Exomoon soundtrack - 07 Shrine.mp3" id="4_i0mlu"]
 [ext_resource type="AudioStream" uid="uid://vrmgoygl8qf2" path="res://Assets/SFX/515619__mrickey13__splatsquish-2.wav" id="5_7t6lv"]
+[ext_resource type="AudioStream" uid="uid://1vhbc28fs5ju" path="res://Assets/Music/Deadwing - The Early Years - 08 Outside.mp3" id="5_leryb"]
 [ext_resource type="AudioStream" uid="uid://k6ql41kk4dsx" path="res://Assets/Music/Tomás Soares - Exomoon soundtrack - 16 Intermission.mp3" id="5_x27u4"]
 [ext_resource type="AudioStream" uid="uid://cjtjbv3hau202" path="res://Assets/SFX/519005__someguy22__8-bit-cannon-fire.wav" id="5_yr7r6"]
 [ext_resource type="AudioStream" uid="uid://cs8fbi0o150v2" path="res://Assets/SFX/523655__lilmati__powerup-09.wav" id="6_nmjpm"]
@@ -45,6 +46,11 @@ volume_db = -10.0
 [node name="LevelUndergroundShelter" type="AudioStreamPlayer" parent="Music" groups=["music"]]
 process_mode = 3
 stream = ExtResource("4_5wftm")
+volume_db = -8.0
+
+[node name="LevelOutside" type="AudioStreamPlayer" parent="Music" groups=["music"]]
+process_mode = 3
+stream = ExtResource("5_leryb")
 volume_db = -8.0
 
 [node name="GameOver" type="AudioStreamPlayer" parent="Music" groups=["music"]]

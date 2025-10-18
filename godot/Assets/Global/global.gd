@@ -11,7 +11,7 @@ enum Layers {
 	PLAYER_ATTACK = 7
 }
 
-######
+###### GLOBAL LIVES
 
 var current_lives := 0
 var reset_lives := true
@@ -29,13 +29,15 @@ func add_life_to_picked_up_set(lifeName : String) -> void:
 func is_life_already_picked_up(lifeName : String) -> bool:
 	return picked_lives.get(lifeName) == 1
 	
-######
+###### GLOBAL SCENE MANAGEMENT
 	
 var initial_scene_order := [
 	"res://Levels/level_1.tscn",
 	"res://Levels/level_2.tscn",
 	"res://Levels/level_3.tscn",
 	"res://Levels/level_4.tscn",
+	"res://Levels/level_5.tscn",
+	"res://Levels/level_6.tscn",
 ]
 
 var current_scene_order := []
@@ -74,7 +76,7 @@ func game_over() -> void:
 	SoundManager.stop_all_music()
 	get_tree().change_scene_to_file("res://Menu/gameover.tscn")
 
-######
+###### GLOBAL CONTROL CONFIGURATION
 
 var camera_sensitivity := 1000.0
 const SENSITIVITY_MULTIPLIER := 200

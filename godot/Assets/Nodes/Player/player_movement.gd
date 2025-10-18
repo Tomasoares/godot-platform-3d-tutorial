@@ -39,19 +39,21 @@ func rotate_body(delta: float, input_dir: Vector2) -> void:
 
 	#get angle where the character is running
 	var velocity_angle : float = get_velocity_angle()
-	#adjust angle orientation by 90 degrees
-	var adjusted_velocity_angle = rad_to_deg(velocity_angle) + ANGLE_ADJUST
 	#subtract velocity angle with player global rotation to get relative velocity of the player
 	#instead of global velocity
-	var relative_turn_angle = adjusted_velocity_angle - player.global_rotation_degrees.y
+	var relative_turn_angle = velocity_angle - player.global_rotation_degrees.y
 	#keep resulting angle between -180 and 180 degress to avoid increasing values
-	body.rotation_degrees.y = wrapf(relative_turn_angle, -180, 180)
+	var wrap_turn_angle := wrapf(relative_turn_angle, -180, 180)
+	body.rotation.y = lerp_angle(body.rotation.y, deg_to_rad(wrap_turn_angle), 0.5)
 		
 func get_velocity_angle() -> float:
 	var player_velocity: Vector3 = player.velocity
 	var horizontal_velocity: Vector2 = Vector2(-player_velocity.x, player_velocity.z)
 	var angle_in_radians: float = horizontal_velocity.angle()
-	return angle_in_radians
+
+	#adjust angle orientation by 90 degrees
+	var adjusted_velocity_angle = rad_to_deg(angle_in_radians) + ANGLE_ADJUST
+	return adjusted_velocity_angle
 		
 func incline_body() -> void:
 	#align character with irregular floor (raycast must be in top level)

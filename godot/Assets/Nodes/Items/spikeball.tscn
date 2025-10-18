@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cyo8w7slnxsau" path="res://Assets/Nodes/Items/spikeball.gd" id="1_pv13x"]
 [ext_resource type="Material" uid="uid://1epsq3ydcvri" path="res://Assets/Resources/spike-material.tres" id="2_ic85q"]
-[ext_resource type="Script" uid="uid://bhmdnih4miefx" path="res://Assets/Nodes/Items/kill_area.gd" id="3_vshet"]
+[ext_resource type="Script" uid="uid://bhmdnih4miefx" path="res://Assets/Nodes/Enemy/kill_area.gd" id="3_vshet"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ic85q"]
 

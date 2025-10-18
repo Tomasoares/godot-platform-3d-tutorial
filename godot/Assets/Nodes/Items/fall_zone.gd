@@ -5,4 +5,6 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	SoundManager.play_player_die()
-	lives_manager.lose_try()
+	
+	if lives_manager:
+		lives_manager.lose_try()

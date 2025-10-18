@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqn51mw7stk6t"]
 
-[ext_resource type="PackedScene" uid="uid://dc4d0ps8auti3" path="res://Assets/Nodes/Items/icon.tscn" id="1_m5fwm"]
-[ext_resource type="Script" uid="uid://bypp18rb72ln0" path="res://Assets/Nodes/Items/extra_life.gd" id="1_nt0b2"]
+[ext_resource type="PackedScene" uid="uid://dc4d0ps8auti3" path="res://Assets/Nodes/Collectibles/icon.tscn" id="1_m5fwm"]
+[ext_resource type="Script" uid="uid://bypp18rb72ln0" path="res://Assets/Nodes/Collectibles/extra_life.gd" id="1_nt0b2"]
 [ext_resource type="FontFile" uid="uid://h8berclpli6i" path="res://Assets/Fonts/SyneMono-Regular.ttf" id="3_r72xl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_42qgl"]

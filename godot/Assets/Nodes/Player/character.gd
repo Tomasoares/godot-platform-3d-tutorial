@@ -16,7 +16,6 @@ func _physics_process(delta: float) -> void:
 		camera_controller.handle_camera(delta)
 		$AnimationScript.handle_animation(delta)
 			
-	
 func bounce() -> void:
 	$MovementScript.bounce()
 
@@ -25,4 +24,4 @@ func die() -> void:
 	set_collision_layer_value(1, false)
 	SoundManager.play_player_die()
 	await $AnimationScript.play_death_animation()
-	player.lives_manager.lose_try()
+	player.lose_life()

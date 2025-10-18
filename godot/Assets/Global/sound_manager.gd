@@ -56,6 +56,10 @@ func play_level_underground() -> void:
 	if !$Music/LevelUndergroundShelter.playing:
 		$Music/LevelUndergroundShelter.play()
 
+func play_level_outside() -> void:
+	if !$Music/LevelOutside.playing:
+		$Music/LevelOutside.play()
+		
 func stop_level_ganymade() -> void:
 	$Music/LevelGanymade.stop()
 
