@@ -486,10 +486,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 6, 0.53523254)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 8, -2.4647675)
 
 [node name="Bouncer4" parent="Things/Bouncers" instance=ExtResource("11_cmy7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 16, -18.464767)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 16, -17.942265)
 
 [node name="Bouncer5" parent="Things/Bouncers" instance=ExtResource("11_cmy7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 16, -30.464767)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 16, -30.105547)
 
 [node name="Bouncer6" parent="Things/Bouncers" instance=ExtResource("11_cmy7x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0824413, 20, -37.064766)
