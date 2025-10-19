@@ -53,17 +53,11 @@ func begin_game() -> void:
 	go_to_next_level()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func go_to_main_menu(stop_music = true) -> void:
-	if stop_music:
-		SoundManager.stop_all_music()
-		
+func go_to_main_menu() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 	
-func go_to_next_level(stop_music = true) -> void:
-	if stop_music:
-		SoundManager.stop_all_music()
-	
+func go_to_next_level() -> void:
 	get_tree().paused = false
 	begin_level()
 	

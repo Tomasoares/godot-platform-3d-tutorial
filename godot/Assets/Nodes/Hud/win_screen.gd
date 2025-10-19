@@ -4,7 +4,6 @@ extends Control
 @export var duration := 0.5
 @export var pause_manager : Control
 @export var timer_manager : TimerManager
-@export var stop_current_music := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,4 +26,4 @@ func update_timer(minutes: float, seconds: float):
 	$TimeLabel/SecondLabel.text = "%02d" % seconds
 	
 func _on_next_button_pressed() -> void:
-	Global.go_to_next_level(stop_current_music)
+	Global.go_to_next_level()

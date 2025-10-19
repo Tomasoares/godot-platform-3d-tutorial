@@ -37,31 +37,38 @@ func play_level_cleared_music() -> void:
 	$Sound/LevelCleared.play()
 	
 func play_main_menu_music() -> void:
+	stop_all_music() 
 	$Music/MainMenuMusic.play()
 	
 func stop_main_menu_music() -> void:
 	$Music/MainMenuMusic.stop()
 	
 func play_game_over_music() -> void:
+	stop_all_music() 
 	$Music/GameOver.play()
 	
 func play_victory_song() -> void:
+	stop_all_music() 
 	$Music/Victory.play()
 	
 func play_level_ganymade() -> void:
 	if !$Music/LevelGanymade.playing:
+		stop_all_music() 
 		$Music/LevelGanymade.play()
 	
 func play_level_underground() -> void:
 	if !$Music/LevelUndergroundShelter.playing:
+		stop_all_music() 
 		$Music/LevelUndergroundShelter.play()
 
 func play_level_outside() -> void:
 	if !$Music/LevelOutside.playing:
+		stop_all_music() 
 		$Music/LevelOutside.play()
 
 func play_level_inferno() -> void:
 	if !$Music/Levelinferno.playing:
+		stop_all_music() 
 		$Music/Levelinferno.play()
 		
 func stop_level_ganymade() -> void:
