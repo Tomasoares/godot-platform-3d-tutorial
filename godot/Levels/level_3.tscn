@@ -1,0 +1,443 @@
+[gd_scene load_steps=22 format=3 uid="uid://dypg8hrtyj6m4"]
+
+[ext_resource type="Script" uid="uid://d2c1qmvnixfiu" path="res://Assets/Nodes/Systems/lives_manager.gd" id="1_wtqdv"]
+[ext_resource type="PackedScene" uid="uid://b14amt1t088u" path="res://Assets/Nodes/Systems/coin_manager.tscn" id="2_1yi2b"]
+[ext_resource type="Script" uid="uid://brw6lssv6saty" path="res://Assets/Nodes/Systems/timer_manager.gd" id="3_462h2"]
+[ext_resource type="PackedScene" uid="uid://3rf4byrs4v8e" path="res://Assets/Nodes/Items/moving_platform.tscn" id="4_pmssq"]
+[ext_resource type="PackedScene" uid="uid://dtcumeuqke5t2" path="res://Assets/Nodes/Player/player.tscn" id="5_xdxew"]
+[ext_resource type="PackedScene" uid="uid://bom17dcrwh8h8" path="res://Assets/Nodes/Enemy/enemy.tscn" id="6_iimkc"]
+[ext_resource type="PackedScene" uid="uid://jpkcrh5xyo8a" path="res://Assets/Nodes/Items/block.tscn" id="7_wnsmg"]
+[ext_resource type="PackedScene" uid="uid://s0o1es323d32" path="res://Assets/Nodes/Collectibles/coin.tscn" id="8_1jtbt"]
+[ext_resource type="PackedScene" uid="uid://dqn51mw7stk6t" path="res://Assets/Nodes/Collectibles/extra_life.tscn" id="9_eq1l6"]
+[ext_resource type="PackedScene" uid="uid://oyjtmrxq83ge" path="res://Assets/Nodes/Items/spring.tscn" id="10_qy0u1"]
+[ext_resource type="MeshLibrary" uid="uid://dynqytbcq80td" path="res://Assets/Resources/world-blocks-v1.tres" id="11_n33ao"]
+[ext_resource type="Script" uid="uid://dnc0khkx7arhc" path="res://Assets/Nodes/Items/fall_zone.gd" id="13_0cy58"]
+[ext_resource type="PackedScene" uid="uid://brt7iomeg6l42" path="res://Assets/Nodes/Hud/hud.tscn" id="14_g7xwt"]
+[ext_resource type="PackedScene" uid="uid://cnfbbvb0tuc8o" path="res://Assets/Nodes/Hud/collect_all_coins_intro.tscn" id="15_dg4kv"]
+[ext_resource type="PackedScene" uid="uid://c7q775vp1i4cy" path="res://Assets/Nodes/Hud/pause_menu.tscn" id="16_b0uqu"]
+[ext_resource type="PackedScene" uid="uid://df8ky1p113mmd" path="res://Assets/Nodes/Hud/win_screen.tscn" id="17_vv22o"]
+
+[sub_resource type="GDScript" id="GDScript_rka8t"]
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	SoundManager.play_level_ganymade()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5wr1k"]
+sky_top_color = Color(0.8866178, 0.3781452, 0.38135788, 1)
+sky_horizon_color = Color(0.6233258, 0.13745448, 0.2873481, 1)
+sky_curve = 0.07764521
+ground_bottom_color = Color(0.061724663, 0.041785292, 0.044003777, 1)
+ground_horizon_color = Color(0.41722628, 0.21790463, 0.22628966, 1)
+
+[sub_resource type="Sky" id="Sky_wtqdv"]
+sky_material = SubResource("ProceduralSkyMaterial_5wr1k")
+
+[sub_resource type="Environment" id="Environment_1yi2b"]
+background_mode = 2
+sky = SubResource("Sky_wtqdv")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.3
+ssr_enabled = true
+ssao_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rka8t"]
+
+[node name="Level" type="Node3D"]
+script = SubResource("GDScript_rka8t")
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="LivesManager" type="Node" parent="Systems" node_paths=PackedStringArray("hud")]
+script = ExtResource("1_wtqdv")
+hud = NodePath("../../UI/HUD")
+
+[node name="CoinManager" parent="Systems" node_paths=PackedStringArray("hud_manager", "win_screen") instance=ExtResource("2_1yi2b")]
+finish_scene = "uid://chb5dubgcryke"
+hud_manager = NodePath("../../UI/HUD")
+win_screen = NodePath("../../UI/WinScreen")
+
+[node name="TimerManager" type="Node3D" parent="Systems" node_paths=PackedStringArray("hud")]
+script = ExtResource("3_462h2")
+hud = NodePath("../../UI/HUD")
+
+[node name="Things" type="Node3D" parent="."]
+
+[node name="Platforms" type="Node3D" parent="Things"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 17)
+
+[node name="MovingPlatform2" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
+finalPosition = Vector3(-10, 0, -10)
+duration = 3.0
+
+[node name="MovingPlatform7" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+finalPosition = Vector3(-6, 0, -6)
+duration = 3.0
+
+[node name="MovingPlatform13" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 2)
+finalPosition = Vector3(-10, 0, 2)
+duration = 3.0
+
+[node name="MovingPlatform5" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -10)
+finalPosition = Vector3(-2, 0, -2)
+duration = 3.0
+
+[node name="MovingPlatform" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -16)
+finalPosition = Vector3(-2, 0, -16)
+duration = 3.0
+
+[node name="MovingPlatform8" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
+finalPosition = Vector3(4, 0, -8)
+duration = 3.0
+
+[node name="MovingPlatform12" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+finalPosition = Vector3(12, 0, -2)
+duration = 3.0
+
+[node name="MovingPlatform9" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
+finalPosition = Vector3(12, 0, -4)
+duration = 3.0
+
+[node name="MovingPlatform4" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
+finalPosition = Vector3(-12, 0, -16)
+duration = 3.0
+
+[node name="MovingPlatform10" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -19)
+finalPosition = Vector3(-8, 0, -19)
+duration = 3.0
+
+[node name="MovingPlatform11" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -19)
+finalPosition = Vector3(9, 0, -19)
+duration = 3.0
+
+[node name="MovingPlatform6" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -13)
+finalPosition = Vector3(-7, 0, -13)
+duration = 3.0
+
+[node name="MovingPlatform3" parent="Things/Platforms" instance=ExtResource("4_pmssq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, -24)
+finalPosition = Vector3(-16, 2, -30)
+duration = 3.0
+
+[node name="Player" parent="Things" node_paths=PackedStringArray("lives_manager") instance=ExtResource("5_xdxew")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.062015533, 6.5047083, -24)
+lives_manager = NodePath("../../Systems/LivesManager")
+
+[node name="Enemies" type="Node3D" parent="Things"]
+
+[node name="Enemy" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.92927444, 4.0527277, -4.8905826)
+
+[node name="Enemy6" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -19.070726, 1.0527277, 9.109417)
+
+[node name="Enemy7" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, -11.070726, 3.0527277, 7.109417)
+
+[node name="Enemy3" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 22.929274, 8.052728, 5.1094174)
+
+[node name="Enemy5" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 20.929274, 4.0527277, 13.109417)
+
+[node name="Enemy8" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 6.9292736, 4.0527277, 17.109417)
+
+[node name="Enemy10" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -0.9500685, 4.0527277, 23.109417)
+
+[node name="Enemy11" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.0707264, 19.052727, 7.109417)
+
+[node name="Enemy12" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11.070726, 19.052727, 1.109417)
+
+[node name="Enemy4" parent="Things/Enemies" instance=ExtResource("6_iimkc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 26.87755, 8.052728, 1.1094174)
+
+[node name="Blocks" type="Node3D" parent="Things"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1764078, 0)
+
+[node name="Block" parent="Things/Blocks" instance=ExtResource("7_wnsmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9886179, 2.4379773, -15.711769)
+
+[node name="Block2" parent="Things/Blocks" instance=ExtResource("7_wnsmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21138215, 2.4379773, -15.711769)
+
+[node name="Block3" parent="Things/Blocks" instance=ExtResource("7_wnsmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36334825, 3.4379773, -15.711769)
+
+[node name="Coins" type="Node3D" parent="Things"]
+
+[node name="Coin9" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037716866, 6.967852, -10)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin12" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.037717, 7.967852, -10)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin15" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.037716, 4.967852, 12)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin16" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.037716, 4.967852, 1)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin17" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.037716, 4.967852, 14)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin18" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.037716, 4.967852, 3)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin19" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.037716, 4.967852, 16)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin20" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.037716, 4.967852, 5)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin21" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.962284, 2.967852, 7)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin22" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.962284, 2.967852, 9)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin23" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.962284, 2.967852, 7)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin24" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.962284, 2.967852, 9)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin13" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.037717, 9.967852, -10)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin14" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.037717, 11.967852, -10)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin25" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.037717, 9.967852, 25)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin26" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.037717, 11.967852, 25)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin27" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.037717, 13.967852, 25)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin28" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0377169, 13.967852, 27.251356)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin29" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0377169, 15.967852, 27.251356)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin30" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0377169, 17.967852, 27.251356)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin31" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 17.967852, 23)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin32" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 19.967852, 23)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin34" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 19.967852, 19)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin35" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 19.967852, 13)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin36" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0377169, 19.967852, 13)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin37" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0377169, 19.967852, 7)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin38" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 19.967852, 7)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin39" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 19.967852, 1)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin40" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.962283, 19.967852, 1)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin41" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.962283, 19.967852, -5)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin42" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 19.967852, -5)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin43" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 19.967852, -5)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin44" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 19.967852, -11)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin45" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9622831, 19.967852, -11)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin46" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9622831, 17.967852, -11)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin47" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9622831, 15.967852, -11)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin33" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.962283, 21.967852, 23)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin10" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037716866, 8.967852, -10)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="Coin11" parent="Things/Coins" node_paths=PackedStringArray("coin_manager") instance=ExtResource("8_1jtbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037716866, 10.967852, -10)
+coin_manager = NodePath("../../../Systems/CoinManager")
+
+[node name="ExtraLives" type="Node3D" parent="Things"]
+
+[node name="ExtraLife" parent="Things/ExtraLives" node_paths=PackedStringArray("lives_manager") instance=ExtResource("9_eq1l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.021751, 7.0352077, -10.022044)
+lives_manager = NodePath("../../../Systems/LivesManager")
+
+[node name="ExtraLife3" parent="Things/ExtraLives" node_paths=PackedStringArray("lives_manager") instance=ExtResource("9_eq1l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021751404, 1.0352077, -10.022044)
+lives_manager = NodePath("../../../Systems/LivesManager")
+
+[node name="ExtraLife2" parent="Things/ExtraLives" node_paths=PackedStringArray("lives_manager") instance=ExtResource("9_eq1l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.978249, 10.035208, 2.9779558)
+lives_manager = NodePath("../../../Systems/LivesManager")
+
+[node name="ExtraLife4" parent="Things/ExtraLives" node_paths=PackedStringArray("lives_manager") instance=ExtResource("9_eq1l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.021751, -1.9647923, 6.977956)
+lives_manager = NodePath("../../../Systems/LivesManager")
+
+[node name="Bumps" type="Node3D" parent="Things"]
+
+[node name="Spring" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.947769, 6.452947, -10)
+
+[node name="Spring10" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.947769, -0.54705286, -15)
+
+[node name="Spring3" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18.94777, 4.452947, 3)
+
+[node name="Spring4" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 22.94777, 4.452947, 9)
+
+[node name="Spring5" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.947769, 4.452947, 21)
+
+[node name="Spring11" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -21.05223, -2.5470529, 15)
+
+[node name="Spring6" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.9477692, 4.452947, 22.886965)
+
+[node name="Spring7" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.947769, 8.452948, 25)
+
+[node name="Spring8" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.94776917, 12.452948, 27.251356)
+
+[node name="Spring9" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.052231, 16.452948, 23)
+
+[node name="Spring2" parent="Things/Bumps" instance=ExtResource("10_qy0u1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.052230835, 5.452947, -10)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.90966845, 0.1879297, 0.37038603, -0.2984671, -0.3243604, 0.8976123, 0.28882656, -0.9270776, -0.23896958, 0.7523732, 7.703345, -2.8936958)
+light_energy = 2.02
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_1yi2b")
+
+[node name="FallZone" type="Area3D" parent="World" node_paths=PackedStringArray("lives_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.133493, 0)
+script = ExtResource("13_0cy58")
+lives_manager = NodePath("../../Systems/LivesManager")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/FallZone"]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, 0.036364555, 0)
+shape = SubResource("BoxShape3D_rka8t")
+
+[node name="GridMap2" type="GridMap" parent="World"]
+mesh_library = ExtResource("11_n33ao")
+collision_layer = 2
+collision_mask = 9
+data = {
+"cells": PackedInt32Array(0, 65524, 1441798, 0, 65523, 7, 65535, 65523, 1048583, 65535, 65524, 1048582, 0, 65525, 1048576, 0, 65526, 1048576, 65535, 65526, 1048576, 65535, 65525, 1048576, 65536, 65527, 1441798, 131071, 65527, 1048582, 131071, 65528, 1048582, 65536, 65528, 1441798, 65536, 65526, 655361, 131071, 65526, 655361, 65536, 65525, 655362, 131071, 65525, 655362, 65536, 65529, 655360, 131071, 65529, 655360, 131071, 65530, 655360, 65536, 65530, 655360, 65536, 65531, 655360, 131071, 65531, 655360, 65537, 65529, 7, 65537, 65532, 1441799, 131070, 65532, 655367, 131070, 65529, 1048583, 65537, 65531, 1048576, 65537, 65530, 1048576, 131070, 65531, 1048576, 131070, 65530, 1048576, 65538, 65530, 0, 65538, 65531, 0, 65539, 65531, 0, 65539, 65530, 0, 131069, 65530, 0, 131069, 65531, 0, 131068, 65531, 0, 131068, 65530, 0, 65536, 65532, 0, 131071, 65532, 0, 65536, 65533, 1441798, 131071, 65533, 1048582, 131071, 65534, 1048582, 65536, 65534, 1441798, 131074, 65530, 1441794, 131074, 65531, 1441794, 196605, 65531, 1048578, 196605, 65530, 1048578, 196604, 65531, 1048577, 196604, 65530, 1048577, 131075, 65530, 1441793, 131075, 65531, 1441793, 131076, 65530, 6, 131076, 65531, 655366, 131077, 65531, 1441799, 131077, 65530, 7, 131072, 65530, 3, 131072, 65531, 3, 196607, 65531, 3, 196607, 65530, 3, 196603, 65530, 6, 196603, 65531, 655366, 196599, 65530, 6, 196599, 65531, 655366, 196598, 65530, 1048583, 196598, 65531, 655367, 65543, 0, 6, 65543, 1, 655360, 65543, 2, 655360, 65544, 0, 6, 65544, 1, 655360, 65544, 2, 655360, 65545, 0, 7, 65545, 1, 1441798, 65545, 2, 1441798, 65546, 4, 6, 65546, 5, 655360, 65546, 6, 655360, 65546, 7, 655360, 65546, 8, 655366, 65547, 4, 7, 65547, 5, 1441798, 65547, 6, 1441798, 65547, 7, 1441798, 65547, 8, 1441799, 131070, 11, 1048582, 131070, 12, 655367, 131071, 11, 655360, 131071, 12, 655366, 65536, 11, 655360, 65536, 12, 655366, 65537, 11, 1441798, 65537, 12, 1441799, 65539, 8, 655360, 65539, 9, 655360, 65539, 10, 655366, 65540, 8, 1441798, 65540, 9, 1441798, 65540, 10, 1441799, 131065, 6, 655360, 131065, 7, 655367, 131066, 6, 6, 131066, 7, 655366, 131065, 0, 1048583, 131065, 1, 655360, 131066, 0, 6, 131066, 1, 655366, 196619, 0, 6, 196619, 1, 655360, 196619, 2, 655360, 196620, 0, 6, 196620, 1, 655360, 196620, 2, 655360, 196621, 0, 7, 196621, 1, 1441798, 196621, 2, 1441798, 262156, 1, 1441795, 131066, 3, 655363, 131065, 3, 1441794, 131065, 4, 1441794, 131066, 4, 655363, 65529, 3, 655360, 65529, 4, 655360, 65528, 3, 1441793, 65528, 4, 1441793, 65527, 3, 1441795, 65527, 4, 1441795, 65526, 3, 1441795, 65526, 4, 1441795, 65525, 4, 1441792, 65525, 5, 1441795, 65526, 5, 1441795, 65526, 2, 1441795, 65525, 2, 1441795, 65525, 3, 1441792, 65524, 2, 1441795, 65524, 3, 1441792, 65524, 4, 1441792, 65524, 5, 1441795, 65523, 5, 1441795, 65523, 4, 1441795, 65523, 3, 1441795, 65523, 2, 1441795, 196611, 11, 1048583, 196612, 11, 7, 196612, 12, 1441799, 196611, 12, 655367, 524286, 12, 1441799, 524286, 11, 7, 524285, 11, 1048583, 524285, 12, 655367, 655357, 9, 655363, 655357, 8, 655363, 655357, 7, 655363, 655357, 6, 655363, 655358, 6, 655363, 655359, 6, 655363, 589824, 6, 655363, 589824, 5, 655363, 589824, 4, 655363, 589824, 3, 655363, 655359, 3, 655363, 655358, 3, 655363, 655357, 3, 655363, 655357, 2, 655363, 655357, 1, 655363, 655357, 0, 655363, 655356, 0, 655363, 655355, 0, 655363, 655354, 0, 655363, 655354, 65535, 655363, 655354, 65534, 655363, 655354, 65533, 655363, 655355, 65533, 655363, 655356, 65533, 655363, 655357, 65533, 655363, 655357, 65532, 655363, 655357, 65531, 655363, 655357, 65530, 655363, -65535, 65528, 655363, -65534, 65528, 655363, -65534, 65529, 655363, -65535, 65529, 655363, -65535, 65530, 655363, -65536, 65529, 655363, -1, 65529, 655363, -1, 65530, 655363, -65536, 65530, 655363, -65535, 65531, 655363, -65536, 65531, 655363, -1, 65531, 655363, 327680, 13, 1048583, 327680, 14, 655367, 327681, 13, 7, 327681, 14, 1441799, -65547, 7, 655363, -65547, 6, 655363, -65547, 5, 655363, -65547, 4, 655363, -65547, 3, 655363)
+}
+metadata/_editor_floor_ = Vector3(0, -2, 0)
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("14_g7xwt")]
+
+[node name="CollectAllCoinsIntro" parent="UI" instance=ExtResource("15_dg4kv")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("16_b0uqu")]
+
+[node name="WinScreen" parent="UI" node_paths=PackedStringArray("pause_manager", "timer_manager") instance=ExtResource("17_vv22o")]
+pause_manager = NodePath("../PauseMenu")
+timer_manager = NodePath("../../Systems/TimerManager")
+
+[connection signal="tree_exiting" from="Things/Player" to="." method="_on_player_tree_exiting"]
+[connection signal="body_entered" from="World/FallZone" to="World/FallZone" method="_on_body_entered"]

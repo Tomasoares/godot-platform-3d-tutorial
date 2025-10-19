@@ -58,13 +58,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 17)
 
 [node name="MovingPlatform2" parent="Things/Platforms" instance=ExtResource("9_xoyoh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -35)
-initialPosition = Vector3(-36, 0, -35)
 finalPosition = Vector3(-26, 0, -35)
 duration = 3.0
 
 [node name="MovingPlatform" parent="Things/Platforms" instance=ExtResource("9_xoyoh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -39)
-initialPosition = Vector3(-26, 0, -39)
 finalPosition = Vector3(-36, 0, -39)
 duration = 3.0
 
@@ -79,7 +77,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20.970007, 3.052728, -8.8905
 
 [node name="Enemy4" parent="Things/Enemies" instance=ExtResource("8_77x7w")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -28.970007, -6.9472723, -16.890583)
-currentDirection = Vector3(0, 0, -1)
 
 [node name="Enemy3" parent="Things/Enemies" instance=ExtResource("8_77x7w")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.970007, 3.052728, 13.109417)
@@ -300,7 +297,6 @@ shape = SubResource("BoxShape3D_rka8t")
 [node name="WinScreen" parent="UI" node_paths=PackedStringArray("pause_manager", "timer_manager") instance=ExtResource("16_k2bse")]
 pause_manager = NodePath("../PauseMenu")
 timer_manager = NodePath("../../Systems/TimerManager")
-stop_current_music = false
 
 [connection signal="tree_exiting" from="Things/Player" to="." method="_on_player_tree_exiting"]
 [connection signal="body_entered" from="World/FallZone" to="World/FallZone" method="_on_body_entered"]
