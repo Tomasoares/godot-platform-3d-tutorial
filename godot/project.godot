@@ -13,12 +13,17 @@ config_version=5
 config/name="godot-tutorial"
 run/main_scene="uid://dc524sy15i8r7"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://Assets/Sprites/icon.svg"
+config/icon="uid://dvefysuykqsi7"
 
 [autoload]
 
 Global="*res://Assets/Global/global.gd"
 SoundManager="*res://Assets/Global/sound_manager.tscn"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [input]
 
