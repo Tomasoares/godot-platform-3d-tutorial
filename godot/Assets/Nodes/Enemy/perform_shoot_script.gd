@@ -6,6 +6,7 @@ extends Node
 @export var bullet_spawn_shoot : Node3D
 
 const PROJECTILE_SCENE = preload("res://Assets/Nodes/Enemy/projectile.tscn")
+const TOO_CLOSE = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,13 +17,18 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_shooting_timer_timeout() -> void:
-	animation_player.play("shoot")
-	sound.play()
 	create_projectile()
 	
 func create_projectile() -> void:
-	var projectile : Projectile = PROJECTILE_SCENE.instantiate()
 	var source_position := bullet_spawn_shoot.global_position
 	var target_position := enemy_shooter.get_player().get_marker_global_position()
+	var direction_vector = target_position - source_position
+	
+	if direction_vector.length() < TOO_CLOSE:
+		return
+	
+	animation_player.play("shoot")
+	sound.play()
+	var projectile : Projectile = PROJECTILE_SCENE.instantiate()
 	projectile.start_motion(source_position, target_position)
 	get_tree().root.add_child(projectile)

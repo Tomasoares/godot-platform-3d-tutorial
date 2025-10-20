@@ -32,17 +32,24 @@ func is_life_already_picked_up(lifeName : String) -> bool:
 ###### GLOBAL SCENE MANAGEMENT
 	
 var initial_scene_order := [
+	"res://Menu/story_1.tscn",
 	"res://Levels/level_1.tscn",
 	"res://Levels/level_2.tscn",
 	"res://Levels/level_3.tscn",
+	"res://Menu/story_2.tscn",
 	"res://Levels/level_4.tscn",
 	"res://Levels/level_5.tscn",
 	"res://Levels/level_6.tscn",
+	"res://Menu/story_3.tscn",
 	"res://Levels/level_7.tscn",
 	"res://Levels/level_8.tscn",
 	"res://Levels/level_9.tscn",
+	"res://Menu/story_4.tscn",
 	"res://Levels/level_10.tscn",
 	"res://Levels/level_11.tscn",
+	"res://Levels/level_12.tscn",
+	"res://Menu/story_5.tscn",
+	"res://Levels/level_end.tscn",
 ]
 
 var current_scene_order := []

@@ -73,6 +73,11 @@ func play_level_inferno() -> void:
 		
 func stop_level_ganymade() -> void:
 	$Music/LevelGanymade.stop()
+	
+func play_typing_sound() -> void:
+	if !$Sound/ButtonTyping.playing:
+		await get_tree().create_timer(0.02).timeout
+		$Sound/ButtonTyping.play()
 
 func stop_all_music() -> void:
 	var music_nodes := get_tree().get_nodes_in_group("music")

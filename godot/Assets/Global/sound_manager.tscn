@@ -125,6 +125,12 @@ stream = ExtResource("14_adbvs")
 volume_db = -15.0
 pitch_scale = 0.99
 
+[node name="ButtonTyping" type="AudioStreamPlayer" parent="Sound"]
+process_mode = 3
+stream = ExtResource("14_adbvs")
+volume_db = -25.0
+pitch_scale = 5.0
+
 [node name="ButtonGoBack" type="AudioStreamPlayer" parent="Sound"]
 process_mode = 3
 stream = ExtResource("15_wpi5b")
