@@ -234,7 +234,7 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.020028085, 0.22788307, -0.037897825)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.020028085, 0.22788307, -0.037897825)
 shape = SubResource("SphereShape3D_lwrlk")
 
 [node name="MovementScript" type="Node" parent="." node_paths=PackedStringArray("enemy", "raycast")]
@@ -247,7 +247,7 @@ script = ExtResource("2_jiocw")
 animation_player = NodePath("../AnimationPlayer")
 
 [node name="AttackArea" type="Area3D" parent="." node_paths=PackedStringArray("enemy")]
-transform = Transform3D(1.1912084, 0, 0, 0, 1, 0, 0, 0, 1.2354543, -0.015124003, -0.07991394, -0.04201154)
+transform = Transform3D(1.0720875, 0, 0, 0, 1, 0, 0, 0, 1.1119089, -0.015124003, -0.07991394, -0.04201154)
 collision_layer = 0
 script = ExtResource("3_ejlg7")
 enemy = NodePath("..")
@@ -258,7 +258,7 @@ shape = SubResource("CylinderShape3D_jiocw")
 debug_color = Color(0.9610434, 1.1551381e-06, 0.51534206, 0.41960785)
 
 [node name="VulnerableArea" type="Area3D" parent="." node_paths=PackedStringArray("enemy", "animation_script")]
-transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1.2, -0.017876863, -0.057264328, -0.035753816)
+transform = Transform3D(1.0518934, 0, 0, 0, 1, 0, 0, 0, 1.0429401, -0.013913274, -0.057264328, -0.040708214)
 collision_layer = 32
 collision_mask = 64
 collision_priority = 2.0

@@ -14,13 +14,70 @@ offset_bottom = 652.0
 color = Color(0, 0, 0, 1)
 
 [node name="ThanksForPlayingText" type="Label" parent="."]
-offset_left = 58.0
-offset_top = 184.0
-offset_right = 1103.0
-offset_bottom = 307.0
+offset_left = 59.0
+offset_top = 6.0
+offset_right = 1104.0
+offset_bottom = 72.0
 theme_override_fonts/font = ExtResource("2_inule")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 50
 text = "Thanks for playing!"
+horizontal_alignment = 1
+
+[node name="SFXCredits" type="Label" parent="."]
+offset_left = 26.0
+offset_top = 75.0
+offset_right = 840.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("2_inule")
+theme_override_font_sizes/font_size = 12
+text = "SFX Credits:
+------------
+146726__leszek_szary__jumping.wav
+187024__lloydevans09__jump2.wav
+187025__lloydevans09__jump1.wav
+191590__leszek_szary__toy-button.wav
+270407__littlerobotsoundfactory__pickup_gold_01.wav
+350875__cabled_mess__coin_c_07.wav
+404150__lilmati__select-denied-01.wav
+455202__lilmati__select-granted-02.wav
+483602__raclure__game-bump.mp3
+515619__mrickey13__splatsquish-2.wav
+515830__newlocknew__ui_1-sweet-sawsytrusarpegiomultiprocessingrsmpl.wav
+519005__someguy22__8-bit-cannon-fire.wav
+521268__mrthenoronha__jump-spring-8-bit.wav
+523649__lilmati__powerup-07.wav
+523655__lilmati__powerup-09.wav
+529953__beetlemuse__footsteps-penguin-snow-globe-game.wav
+531851__tissman__menu-click-2.ogg
+539678__jhyland__upgrade-sfx.wav
+554242__killianm97__fan-pickup-1.wav
+561496__mattruthsound__cardboard-box-small-dropped-onto-soft-surface-punch-hit_96khz_mono_zoomh4n_nt5.wav
+671111__silverillusionist__slime-creature-movement-small-and-cute.wav
+721503__baggonotes__button_click2.wav
+751340__qubodup__slime-death.flac
+"
+
+[node name="FontCredits" type="Label" parent="."]
+offset_left = 597.0
+offset_top = 75.0
+offset_right = 935.0
+offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("2_inule")
+theme_override_font_sizes/font_size = 14
+text = "Font Credis:
+------------
+GoogleSansCode-VariableFont_wght.ttf
+SyneMono-Regular.ttf"
+
+[node name="GameCreatedBy" type="Label" parent="."]
+offset_left = 707.0
+offset_top = 263.0
+offset_right = 1092.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("2_inule")
+theme_override_font_sizes/font_size = 20
+text = "Game created by Deadwing
+based on youtube tutorial by BornCG"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -30,10 +87,10 @@ offset_bottom = 40.0
 
 [node name="GoToMenu" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 405.0
-offset_top = 339.0
-offset_right = 844.6962
-offset_bottom = 452.28516
+offset_left = 284.0
+offset_top = 550.0
+offset_right = 723.6963
+offset_bottom = 663.28516
 scale = Vector2(0.6686435, 0.626737)
 theme_override_fonts/font = ExtResource("2_inule")
 theme_override_font_sizes/font_size = 50
@@ -41,10 +98,10 @@ text = "Go to Menu"
 
 [node name="Exit" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 409.0
-offset_top = 428.00003
-offset_right = 848.6963
-offset_bottom = 541.28516
+offset_left = 609.0
+offset_top = 550.0
+offset_right = 1048.6963
+offset_bottom = 663.28516
 scale = Vector2(0.6686435, 0.626737)
 theme_override_fonts/font = ExtResource("2_inule")
 theme_override_font_sizes/font_size = 50
