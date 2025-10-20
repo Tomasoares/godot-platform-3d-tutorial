@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://oyjtmrxq83ge" path="res://Assets/Nodes/Items/spring.tscn" id="10_bfxkn"]
 [ext_resource type="PackedScene" uid="uid://bn5x0dpimm08j" path="res://Assets/Nodes/Items/bouncer.tscn" id="11_834qr"]
 [ext_resource type="PackedScene" uid="uid://ddfdchpmv3bc1" path="res://Assets/Nodes/Items/spikeball.tscn" id="12_h3mfs"]
-[ext_resource type="Environment" uid="uid://ygaqikky4834" path="res://Assets/Resources/world_3_environment.tres" id="13_sbbnk"]
+[ext_resource type="Environment" uid="uid://ygaqikky4834" path="res://Assets/Resources/world_end_environment.tres" id="13_sbbnk"]
 [ext_resource type="Script" uid="uid://dnc0khkx7arhc" path="res://Assets/Nodes/Items/fall_zone.gd" id="14_skrv6"]
 [ext_resource type="MeshLibrary" uid="uid://3om78icouu6v" path="res://Assets/Resources/world-blocks-v3.tres" id="15_18ppw"]
 [ext_resource type="PackedScene" uid="uid://brt7iomeg6l42" path="res://Assets/Nodes/Hud/hud.tscn" id="16_4q0el"]

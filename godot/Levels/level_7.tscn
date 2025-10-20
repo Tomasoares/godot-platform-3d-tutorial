@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://id1wrosx5s"]
+[gd_scene load_steps=19 format=3 uid="uid://id1wrosx5s"]
 
 [ext_resource type="Script" uid="uid://d2c1qmvnixfiu" path="res://Assets/Nodes/Systems/lives_manager.gd" id="1_orik1"]
 [ext_resource type="PackedScene" uid="uid://b14amt1t088u" path="res://Assets/Nodes/Systems/coin_manager.tscn" id="2_47f0f"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://s0o1es323d32" path="res://Assets/Nodes/Collectibles/coin.tscn" id="8_qsuqf"]
 [ext_resource type="PackedScene" uid="uid://dqn51mw7stk6t" path="res://Assets/Nodes/Collectibles/extra_life.tscn" id="9_d7ns6"]
 [ext_resource type="PackedScene" uid="uid://oyjtmrxq83ge" path="res://Assets/Nodes/Items/spring.tscn" id="10_mhaa7"]
+[ext_resource type="Environment" uid="uid://jwt0ngn1ft5n" path="res://Assets/Resources/w3_environment.tres" id="10_vulay"]
 [ext_resource type="PackedScene" uid="uid://bn5x0dpimm08j" path="res://Assets/Nodes/Items/bouncer.tscn" id="11_cmy7x"]
 [ext_resource type="Script" uid="uid://dnc0khkx7arhc" path="res://Assets/Nodes/Items/fall_zone.gd" id="14_t5ec6"]
 [ext_resource type="MeshLibrary" uid="uid://3om78icouu6v" path="res://Assets/Resources/world-blocks-v3.tres" id="15_47f0f"]
@@ -28,25 +29,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 "
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0y6jj"]
-sky_top_color = Color(0.009662454, 0.057711385, 0.097231604, 1)
-sky_horizon_color = Color(9.3854965e-07, 0.26401773, 0.34853527, 1)
-sky_curve = 0.07764521
-ground_bottom_color = Color(0.049327083, 0.07352529, 0.081589706, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Sky" id="Sky_vulay"]
-sky_material = SubResource("ProceduralSkyMaterial_0y6jj")
-
-[sub_resource type="Environment" id="Environment_1k73j"]
-background_mode = 2
-sky = SubResource("Sky_vulay")
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 3.86
-ssr_enabled = true
-ssao_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rka8t"]
 
@@ -274,7 +256,7 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
-environment = SubResource("Environment_1k73j")
+environment = ExtResource("10_vulay")
 
 [node name="FallZone" type="Area3D" parent="World" node_paths=PackedStringArray("lives_manager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -71.13349, 0)

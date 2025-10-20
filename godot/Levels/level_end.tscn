@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dtcumeuqke5t2" path="res://Assets/Nodes/Player/player.tscn" id="4_xqf7m"]
 [ext_resource type="PackedScene" uid="uid://s0o1es323d32" path="res://Assets/Nodes/Collectibles/coin.tscn" id="5_xrgol"]
 [ext_resource type="PackedScene" uid="uid://dqn51mw7stk6t" path="res://Assets/Nodes/Collectibles/extra_life.tscn" id="6_u65dn"]
-[ext_resource type="Environment" uid="uid://ygaqikky4834" path="res://Assets/Resources/world_3_environment.tres" id="7_nya1f"]
+[ext_resource type="Environment" uid="uid://ygaqikky4834" path="res://Assets/Resources/world_end_environment.tres" id="7_nya1f"]
 [ext_resource type="Script" uid="uid://dnc0khkx7arhc" path="res://Assets/Nodes/Items/fall_zone.gd" id="8_233qj"]
 [ext_resource type="MeshLibrary" uid="uid://3om78icouu6v" path="res://Assets/Resources/world-blocks-v3.tres" id="9_ruvfl"]
 [ext_resource type="PackedScene" uid="uid://brt7iomeg6l42" path="res://Assets/Nodes/Hud/hud.tscn" id="10_y154b"]

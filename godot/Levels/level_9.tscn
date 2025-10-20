@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://oyjtmrxq83ge" path="res://Assets/Nodes/Items/spring.tscn" id="10_lt46x"]
 [ext_resource type="PackedScene" uid="uid://bn5x0dpimm08j" path="res://Assets/Nodes/Items/bouncer.tscn" id="11_f15y6"]
 [ext_resource type="PackedScene" uid="uid://ddfdchpmv3bc1" path="res://Assets/Nodes/Items/spikeball.tscn" id="12_uc3b8"]
-[ext_resource type="Environment" uid="uid://ygaqikky4834" path="res://Assets/Resources/world_3_environment.tres" id="13_rhmvj"]
+[ext_resource type="Environment" uid="uid://jwt0ngn1ft5n" path="res://Assets/Resources/w3_environment.tres" id="13_sqxov"]
 [ext_resource type="Script" uid="uid://dnc0khkx7arhc" path="res://Assets/Nodes/Items/fall_zone.gd" id="14_oksuk"]
 [ext_resource type="MeshLibrary" uid="uid://3om78icouu6v" path="res://Assets/Resources/world-blocks-v3.tres" id="15_kclc4"]
 [ext_resource type="PackedScene" uid="uid://brt7iomeg6l42" path="res://Assets/Nodes/Hud/hud.tscn" id="16_rkpkx"]
@@ -432,7 +432,7 @@ light_specular = 2.02
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
-environment = ExtResource("13_rhmvj")
+environment = ExtResource("13_sqxov")
 
 [node name="FallZone" type="Area3D" parent="World" node_paths=PackedStringArray("lives_manager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -71.13349, 0)
