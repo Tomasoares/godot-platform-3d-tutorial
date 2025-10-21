@@ -1090,11 +1090,12 @@ height = 1.272583
 [node name="Player" type="Node3D"]
 script = ExtResource("1_hhak6")
 
-[node name="CameraController" type="Node3D" parent="." node_paths=PackedStringArray("camera_controller", "spring_arm", "player")]
+[node name="CameraController" type="Node3D" parent="." node_paths=PackedStringArray("camera_controller", "spring_arm", "player", "armature")]
 script = ExtResource("2_liyve")
 camera_controller = NodePath(".")
 spring_arm = NodePath("CameraTarget/SpringArm3D")
 player = NodePath("../Character")
+armature = NodePath("../Character/Armature")
 
 [node name="CameraTarget" type="Node3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, 0.95553607, 0.2948743, 0, -0.2948743, 0.95553607, 0, 2.5307703, 4.352802)

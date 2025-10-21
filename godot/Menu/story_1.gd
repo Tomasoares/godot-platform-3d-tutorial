@@ -14,7 +14,10 @@ func _process(delta: float) -> void:
 		SoundManager.play_typing_sound()
 		
 	if skip_pressed():
-		Global.go_to_next_level()
+		if $AnimationPlayer.is_playing():
+			$AnimationPlayer.speed_scale = 20.0
+		else:
+			Global.go_to_next_level()
 		
 func skip_pressed() -> bool:
 	if Input.is_action_just_pressed("jump"):
