@@ -67,7 +67,7 @@ finalPosition = Vector3(-36, 0, -39)
 duration = 3.0
 
 [node name="Player" parent="Things" node_paths=PackedStringArray("lives_manager") instance=ExtResource("10_62b6n")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -33.10353, 5.5047083, -0.8366282)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -33.10353, 5.5047083, -0.8366282)
 lives_manager = NodePath("../../Systems/LivesManager")
 
 [node name="Enemies" type="Node3D" parent="Things"]

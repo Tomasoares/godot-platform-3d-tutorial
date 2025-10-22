@@ -81,7 +81,7 @@ func move(delta: float, input_direction: Vector2) -> void:
 		player.velocity.z = lerp(player.velocity.z, direction_normalized.z * strength, 0.05)
 	else:
 		#add inertia if player is jumping
-		var weight := 0.1
+		var weight := 0.2
 		var jumping := !player.is_on_floor()
 		if jumping:
 			weight = 0.025

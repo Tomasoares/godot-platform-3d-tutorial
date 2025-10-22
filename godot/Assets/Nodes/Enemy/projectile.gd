@@ -27,6 +27,7 @@ func disappear() -> Signal:
 func start_motion(source_position: Vector3, target_position: Vector3):
 	global_position = source_position
 	var direction_vector = target_position - source_position
+	
 	if direction_vector.length() < TOO_CLOSE:
 		direction_vector.y = 0
 	else:

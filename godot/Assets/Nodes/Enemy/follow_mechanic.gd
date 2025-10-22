@@ -36,6 +36,9 @@ func _process(delta: float) -> void:
 func follow_player(delta: float) -> void:
 	if !follow:
 		return
+		
+	if !enemy.is_on_floor():
+		return
 	
 	if distance_from_player() < 2.0:
 		enemy.velocity = lerp (enemy.velocity, Vector3.ZERO, 0.01)

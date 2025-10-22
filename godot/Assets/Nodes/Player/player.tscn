@@ -1,14 +1,18 @@
-[gd_scene load_steps=34 format=4 uid="uid://dtcumeuqke5t2"]
+[gd_scene load_steps=36 format=4 uid="uid://dtcumeuqke5t2"]
 
 [ext_resource type="Script" uid="uid://dufge67n4qv5h" path="res://Assets/Nodes/Player/player.gd" id="1_hhak6"]
 [ext_resource type="Script" uid="uid://46eq8jsgx55t" path="res://Assets/Nodes/Player/player_movement.gd" id="2_3icjf"]
 [ext_resource type="Script" uid="uid://rlomhiy0lxvo" path="res://Assets/Nodes/Player/character.gd" id="2_bv27b"]
 [ext_resource type="Script" uid="uid://kv6qdlrv5epw" path="res://Assets/Nodes/Player/player_camera.gd" id="2_liyve"]
 [ext_resource type="Script" uid="uid://0oiqft73w80p" path="res://Assets/Nodes/Player/player_animation.gd" id="3_bv27b"]
+[ext_resource type="Script" uid="uid://ycow27d0b4jk" path="res://Assets/Nodes/Player/spring_arm_3d.gd" id="3_ccqfp"]
 [ext_resource type="Texture2D" uid="uid://j3nl4ef08tq4" path="res://Assets/Models/game-robot-001_robot_mix_decals.png" id="4_ibsny"]
 [ext_resource type="Script" uid="uid://f8mq648pi7in" path="res://Assets/Nodes/Player/attack_collision.gd" id="6_ibsny"]
 [ext_resource type="Script" uid="uid://8jb365ro3hrc" path="res://Assets/Nodes/Player/jump_collision.gd" id="7_vj5hy"]
 [ext_resource type="Script" uid="uid://dou5mo0fgqe6k" path="res://Assets/Nodes/Player/block_collision.gd" id="9_wk7ca"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ccqfp"]
+radius = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfx04"]
 resource_name = "plastic-yellow"
@@ -1100,13 +1104,18 @@ armature = NodePath("../Character/Armature")
 [node name="CameraTarget" type="Node3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, 0.95553607, 0.2948743, 0, -0.2948743, 0.95553607, 0, 2.5307703, 4.352802)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraController/CameraTarget"]
-transform = Transform3D(1, 0, 0, 0, 0.9845798, 0.17493707, 0, -0.17493707, 0.9845798, 0, -0.79849267, -4.533769)
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraController/CameraTarget" node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 0.98457986, 0.17493707, 0, -0.17493707, 0.98457986, 0, -0.7377565, -4.5150266)
 collision_mask = 2
+shape = SubResource("SphereShape3D_ccqfp")
 spring_length = 4.0
+script = ExtResource("3_ccqfp")
+camera = NodePath("../Camera3D")
 
-[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 0.9845795, -0.17493704, 0, 0.17493704, 0.9845795, 0, -0.0069447756, 4.603541)
+[node name="SpringArmPosition" type="Node3D" parent="CameraController/CameraTarget/SpringArm3D"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget"]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.060735583, 0.018742085)
 current = true
 
 [node name="Character" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera_controller", "player")]
@@ -1122,7 +1131,7 @@ collision_mask = 2
 script = ExtResource("2_3icjf")
 player = NodePath("..")
 player_raycast = NodePath("../RayCast3D")
-camera = NodePath("../../CameraController/CameraTarget/SpringArm3D/Camera3D")
+camera = NodePath("../../CameraController/CameraTarget/Camera3D")
 body = NodePath("../Armature")
 jump_collision = NodePath("../JumpCollision")
 
@@ -1263,6 +1272,8 @@ player = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Character/BlockCollision"]
 shape = SubResource("BoxShape3D_hhak6")
+
+[node name="JumpReference" type="Node3D" parent="Character"]
 
 [connection signal="area_entered" from="Character/AttackCollision" to="Character/AttackCollision" method="_on_area_entered"]
 [connection signal="body_entered" from="Character/AttackCollision" to="Character/AttackCollision" method="_on_body_entered"]

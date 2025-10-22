@@ -323,7 +323,7 @@ enemy = NodePath("..")
 animation_script = NodePath("../AnimationScript")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VulnerableArea"]
-transform = Transform3D(0.5, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0, 0.4101128, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.13999999, 0, 0, 0, 0.6, 0, 0.47421542, 0)
 shape = SubResource("CylinderShape3D_rjo10")
 debug_color = Color(0, 0.64585036, 0.25781214, 0.41960785)
 
@@ -356,13 +356,13 @@ pitch_scale = 1.7
 max_distance = 25.0
 
 [node name="AttackArea" type="Area3D" parent="." node_paths=PackedStringArray("enemy")]
-transform = Transform3D(1.1912084, 0, 0, 0, 1, 0, 0, 0, 1.2354543, -0.015124003, -0.07991394, -0.04201154)
+transform = Transform3D(1.0720875, 0, 0, 0, 0.896212, 0, 0, 0, 0.9883634, -0.0151240025, -0.07991394, -0.04201154)
 collision_layer = 0
 script = ExtResource("8_q0msj")
 enemy = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
-transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0.40952328, -0.00010198355)
+transform = Transform3D(0.96000004, 0, 0, 0, 0.16, 0, 0, 0, 0.9600003, 0, 0.33336484, -0.00010198355)
 shape = SubResource("CylinderShape3D_4238r")
 debug_color = Color(0.9610434, 1.1551381e-06, 0.51534206, 0.41960785)
 

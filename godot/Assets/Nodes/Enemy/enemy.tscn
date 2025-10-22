@@ -247,13 +247,13 @@ script = ExtResource("2_jiocw")
 animation_player = NodePath("../AnimationPlayer")
 
 [node name="AttackArea" type="Area3D" parent="." node_paths=PackedStringArray("enemy")]
-transform = Transform3D(1.0720875, 0, 0, 0, 1, 0, 0, 0, 1.1119089, -0.015124003, -0.07991394, -0.04201154)
+transform = Transform3D(1.0720875, 0, 0, 0, 1, 0, 0, 0, 1.1007898, -0.015124003, -0.07991394, -0.04201154)
 collision_layer = 0
 script = ExtResource("3_ejlg7")
 enemy = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
-transform = Transform3D(0.563583, 0, 0, 0, 0.10000001, 0, 0, 0, 0.5500001, 0, 0.24910253, -0.00010198355)
+transform = Transform3D(0.563583, 0, 0, 0, 0.050000004, 0, 0, 0, 0.5500001, 0, 0.21778059, -0.0001019761)
 shape = SubResource("CylinderShape3D_jiocw")
 debug_color = Color(0.9610434, 1.1551381e-06, 0.51534206, 0.41960785)
 
@@ -267,7 +267,7 @@ enemy = NodePath("..")
 animation_script = NodePath("../AnimationScript")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VulnerableArea"]
-transform = Transform3D(0.5, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0, 0.4101128, 0)
+transform = Transform3D(0.60000026, 0, 0, 0, 0.060000002, 0, 0, 0, 0.60000014, 0, 0.5234755, 0)
 shape = SubResource("CylinderShape3D_h3kmu")
 debug_color = Color(0, 0.64585036, 0.25781214, 0.41960785)
 
