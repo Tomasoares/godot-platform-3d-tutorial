@@ -524,12 +524,14 @@ spot_attenuation = 0.2
 [node name="HUD" parent="UI" instance=ExtResource("16_kw17g")]
 
 [node name="CollectAllCoinsIntro" parent="UI" instance=ExtResource("17_4ucso")]
+level_number = "8"
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("18_rgdty")]
 
 [node name="WinScreen" parent="UI" node_paths=PackedStringArray("pause_manager", "timer_manager") instance=ExtResource("19_b2283")]
 pause_manager = NodePath("../PauseMenu")
 timer_manager = NodePath("../../Systems/TimerManager")
+level_number = "8"
 
 [connection signal="tree_exiting" from="Things/Player" to="." method="_on_player_tree_exiting"]
 [connection signal="body_entered" from="World/FallZone" to="World/FallZone" method="_on_body_entered"]

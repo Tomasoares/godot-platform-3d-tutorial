@@ -4,9 +4,11 @@ extends Control
 @export var duration := 0.5
 @export var pause_manager : Control
 @export var timer_manager : TimerManager
+@export var level_number := "x"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$LevelClearedText.text = $LevelClearedText.text.replace('X', level_number)
 	modulate.a = 0.0
 
 func win() -> void:

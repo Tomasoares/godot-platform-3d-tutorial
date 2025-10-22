@@ -136,30 +136,28 @@ func is_game_fullscreen() -> bool:
 	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	
 #DEFAULT KEY MAPPING
-var default_cam_left := InputMap.action_get_events("cam_left").duplicate(true)
-var default_cam_right := InputMap.action_get_events("cam_right").duplicate(true)
-var default_cam_adjust := InputMap.action_get_events("cam_adjust_key").duplicate(true)
-
-var default_move_up := InputMap.action_get_events("move_up").duplicate(true)
-var default_move_left := InputMap.action_get_events("move_left").duplicate(true)
-var default_move_right := InputMap.action_get_events("move_right").duplicate(true)
-var default_move_down := InputMap.action_get_events("move_down").duplicate(true)
+var default_cam_left := InputMap.action_get_events("cam_left")
+var default_cam_right := InputMap.action_get_events("cam_right")
+var default_cam_adjust := InputMap.action_get_events("cam_adjust_key")
+var default_move_up := InputMap.action_get_events("move_up")
+var default_move_left := InputMap.action_get_events("move_left")
+var default_move_right := InputMap.action_get_events("move_right")
+var default_move_down := InputMap.action_get_events("move_down")
 	
 #INVERTED KEY MAPPING
-var inverted_cam_left := InputMap.action_get_events("cam_left_inverted").duplicate(true)
-var inverted_cam_right := InputMap.action_get_events("cam_right_inverted").duplicate(true)
-var inverted_cam_adjust := InputMap.action_get_events("cam_adjust_inverted").duplicate(true)
-
-var inverted_move_up := InputMap.action_get_events("move_up_inverted").duplicate(true)
-var inverted_move_left := InputMap.action_get_events("move_left_inverted").duplicate(true)
-var inverted_move_right := InputMap.action_get_events("move_right_inverted").duplicate(true)
-var inverted_move_down := InputMap.action_get_events("move_down_inverted").duplicate(true)
+var inverted_cam_left := InputMap.action_get_events("cam_left_inverted")
+var inverted_cam_right := InputMap.action_get_events("cam_right_inverted")
+var inverted_cam_adjust := InputMap.action_get_events("cam_adjust_inverted")
+var inverted_move_up := InputMap.action_get_events("move_up_inverted")
+var inverted_move_left := InputMap.action_get_events("move_left_inverted")
+var inverted_move_right := InputMap.action_get_events("move_right_inverted")
+var inverted_move_down := InputMap.action_get_events("move_down_inverted")
 
 func toggle_fullscreen(value: bool) -> void:
-	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)	
-	else:
+	if value:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		
 func is_key_map_inverted() -> bool:
 	return InputMap.action_get_events("cam_left") == inverted_cam_left

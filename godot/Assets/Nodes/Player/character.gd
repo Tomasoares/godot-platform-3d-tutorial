@@ -23,5 +23,6 @@ func die() -> void:
 	alive = false
 	set_collision_layer_value(1, false)
 	SoundManager.play_player_die()
+	$JumpReference.visible = false
 	await $AnimationScript.play_death_animation()
 	player.lose_life()

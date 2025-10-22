@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://boptwcrdxid5l"]
+[gd_scene load_steps=21 format=3 uid="uid://boptwcrdxid5l"]
 
 [ext_resource type="Script" uid="uid://d2c1qmvnixfiu" path="res://Assets/Nodes/Systems/lives_manager.gd" id="1_lanlt"]
 [ext_resource type="PackedScene" uid="uid://b14amt1t088u" path="res://Assets/Nodes/Systems/coin_manager.tscn" id="2_p46nt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://s0o1es323d32" path="res://Assets/Nodes/Collectibles/coin.tscn" id="9_44anh"]
 [ext_resource type="PackedScene" uid="uid://dqn51mw7stk6t" path="res://Assets/Nodes/Collectibles/extra_life.tscn" id="10_c17om"]
 [ext_resource type="PackedScene" uid="uid://oyjtmrxq83ge" path="res://Assets/Nodes/Items/spring.tscn" id="11_ou8ym"]
+[ext_resource type="PackedScene" uid="uid://dnwaba81t2ixw" path="res://Assets/Nodes/Items/smoke_particle.tscn" id="11_x163n"]
 [ext_resource type="PackedScene" uid="uid://ddfdchpmv3bc1" path="res://Assets/Nodes/Items/spikeball.tscn" id="13_6mwii"]
 [ext_resource type="PackedScene" uid="uid://d3gwhmmlsvpf1" path="res://Assets/Nodes/Items/killzone.tscn" id="14_ndv18"]
 [ext_resource type="Environment" uid="uid://b5aco46q7fxda" path="res://Assets/Resources/world_4_environment.tres" id="15_4pksn"]
@@ -428,6 +429,48 @@ pause = 0.0
 [node name="Killzone" parent="Things/Killzones" instance=ExtResource("14_ndv18")]
 transform = Transform3D(15.944707, 0, 0, 0, 1, 0, 0, 0, 15.756496, 0, 0.8011615, 0)
 
+[node name="SmokeParticle" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 3)
+
+[node name="SmokeParticle2" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 3)
+
+[node name="SmokeParticle3" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 3)
+
+[node name="SmokeParticle4" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -1)
+
+[node name="SmokeParticle5" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+
+[node name="SmokeParticle6" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -4)
+
+[node name="SmokeParticle7" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 2)
+
+[node name="SmokeParticle8" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 7)
+
+[node name="SmokeParticle9" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 7)
+
+[node name="SmokeParticle10" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 7)
+
+[node name="SmokeParticle11" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 2)
+
+[node name="SmokeParticle12" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, -4)
+
+[node name="SmokeParticle13" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -7)
+
+[node name="SmokeParticle14" parent="Things/Killzones" instance=ExtResource("11_x163n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -7)
+
 [node name="World" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
@@ -475,12 +518,14 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="HUD" parent="UI" instance=ExtResource("18_n6cga")]
 
 [node name="CollectAllCoinsIntro" parent="UI" instance=ExtResource("19_sc360")]
+level_number = "10"
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("20_m6rak")]
 
 [node name="WinScreen" parent="UI" node_paths=PackedStringArray("pause_manager", "timer_manager") instance=ExtResource("21_hrxfq")]
 pause_manager = NodePath("../PauseMenu")
 timer_manager = NodePath("../../Systems/TimerManager")
+level_number = "10"
 
 [connection signal="tree_exiting" from="Things/Player" to="." method="_on_player_tree_exiting"]
 [connection signal="body_entered" from="World/FallZone" to="World/FallZone" method="_on_body_entered"]

@@ -404,12 +404,14 @@ shape = SubResource("BoxShape3D_rka8t")
 [node name="HUD" parent="UI" instance=ExtResource("7_0urlm")]
 
 [node name="CollectAllCoinsIntro" parent="UI" instance=ExtResource("2_34erp")]
+level_number = "2"
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("14_2hkqn")]
 
 [node name="WinScreen" parent="UI" node_paths=PackedStringArray("pause_manager", "timer_manager") instance=ExtResource("16_k2bse")]
 pause_manager = NodePath("../PauseMenu")
 timer_manager = NodePath("../../Systems/TimerManager")
+level_number = "2"
 
 [connection signal="tree_exiting" from="Things/Player" to="." method="_on_player_tree_exiting"]
 [connection signal="body_entered" from="World/FallZone" to="World/FallZone" method="_on_body_entered"]

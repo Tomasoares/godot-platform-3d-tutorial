@@ -432,12 +432,14 @@ metadata/_editor_floor_ = Vector3(0, -2, 0)
 [node name="HUD" parent="UI" instance=ExtResource("14_g7xwt")]
 
 [node name="CollectAllCoinsIntro" parent="UI" instance=ExtResource("15_dg4kv")]
+level_number = "3"
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("16_b0uqu")]
 
 [node name="WinScreen" parent="UI" node_paths=PackedStringArray("pause_manager", "timer_manager") instance=ExtResource("17_vv22o")]
 pause_manager = NodePath("../PauseMenu")
 timer_manager = NodePath("../../Systems/TimerManager")
+level_number = "3"
 
 [connection signal="tree_exiting" from="Things/Player" to="." method="_on_player_tree_exiting"]
 [connection signal="body_entered" from="World/FallZone" to="World/FallZone" method="_on_body_entered"]

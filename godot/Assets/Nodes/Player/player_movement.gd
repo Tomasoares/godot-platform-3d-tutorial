@@ -58,6 +58,7 @@ func get_velocity_angle() -> float:
 func incline_body() -> void:
 	#align character with irregular floor (raycast must be in top level)
 	player_raycast.global_position = player.global_position
+	
 	if player.is_on_floor():
 		var raycast_floor_inclination: Vector3 = player_raycast.get_collision_normal()
 		align_character_with_floor_inclination(raycast_floor_inclination)

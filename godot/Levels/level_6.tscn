@@ -598,12 +598,14 @@ shape = SubResource("BoxShape3D_rka8t")
 [node name="HUD" parent="UI" instance=ExtResource("14_yijdt")]
 
 [node name="CollectAllCoinsIntro" parent="UI" instance=ExtResource("15_57hsd")]
+level_number = "6"
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("16_xujtn")]
 
 [node name="WinScreen" parent="UI" node_paths=PackedStringArray("pause_manager", "timer_manager") instance=ExtResource("17_xlpgh")]
 pause_manager = NodePath("../PauseMenu")
 timer_manager = NodePath("../../Systems/TimerManager")
+level_number = "6"
 
 [connection signal="tree_exiting" from="Things/Player" to="." method="_on_player_tree_exiting"]
 [connection signal="body_entered" from="World/FallZone" to="World/FallZone" method="_on_body_entered"]
