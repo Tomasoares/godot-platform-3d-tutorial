@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://dtcumeuqke5t2"]
+[gd_scene load_steps=39 format=4 uid="uid://dtcumeuqke5t2"]
 
 [ext_resource type="Script" uid="uid://dufge67n4qv5h" path="res://Assets/Nodes/Player/player.gd" id="1_hhak6"]
 [ext_resource type="Script" uid="uid://46eq8jsgx55t" path="res://Assets/Nodes/Player/player_movement.gd" id="2_3icjf"]
@@ -1091,6 +1091,19 @@ height = 1.272583
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hhak6"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ccqfp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccqfp"]
+transparency = 1
+blend_mode = 2
+albedo_color = Color(0, 0, 0, 0.827451)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jgk6w"]
+material = SubResource("StandardMaterial3D_ccqfp")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 0.01
+
 [node name="Player" type="Node3D"]
 script = ExtResource("1_hhak6")
 
@@ -1274,6 +1287,21 @@ player = NodePath("..")
 shape = SubResource("BoxShape3D_hhak6")
 
 [node name="JumpReference" type="Node3D" parent="Character"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Character/JumpReference"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+collision_mask = 2
+spring_length = 10.0
+
+[node name="Area3D" type="Node3D" parent="Character/JumpReference/SpringArm3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Character/JumpReference/SpringArm3D/Area3D"]
+shape = SubResource("BoxShape3D_ccqfp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character/JumpReference/SpringArm3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_jgk6w")
 
 [connection signal="area_entered" from="Character/AttackCollision" to="Character/AttackCollision" method="_on_area_entered"]
 [connection signal="body_entered" from="Character/AttackCollision" to="Character/AttackCollision" method="_on_body_entered"]
