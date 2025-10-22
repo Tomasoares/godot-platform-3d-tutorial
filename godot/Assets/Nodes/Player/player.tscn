@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://dtcumeuqke5t2"]
+[gd_scene load_steps=37 format=4 uid="uid://dtcumeuqke5t2"]
 
 [ext_resource type="Script" uid="uid://dufge67n4qv5h" path="res://Assets/Nodes/Player/player.gd" id="1_hhak6"]
 [ext_resource type="Script" uid="uid://46eq8jsgx55t" path="res://Assets/Nodes/Player/player_movement.gd" id="2_3icjf"]
@@ -10,9 +10,6 @@
 [ext_resource type="Script" uid="uid://f8mq648pi7in" path="res://Assets/Nodes/Player/attack_collision.gd" id="6_ibsny"]
 [ext_resource type="Script" uid="uid://8jb365ro3hrc" path="res://Assets/Nodes/Player/jump_collision.gd" id="7_vj5hy"]
 [ext_resource type="Script" uid="uid://dou5mo0fgqe6k" path="res://Assets/Nodes/Player/block_collision.gd" id="9_wk7ca"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ccqfp"]
-radius = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfx04"]
 resource_name = "plastic-yellow"
@@ -1118,15 +1115,15 @@ transform = Transform3D(1, 0, 0, 0, 0.95553607, 0.2948743, 0, -0.2948743, 0.9555
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraController/CameraTarget" node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 0.98457986, 0.17493707, 0, -0.17493707, 0.98457986, 0, -0.7377565, -4.5150266)
 collision_mask = 2
-shape = SubResource("SphereShape3D_ccqfp")
 spring_length = 4.0
 script = ExtResource("3_ccqfp")
 camera = NodePath("../Camera3D")
 
 [node name="SpringArmPosition" type="Node3D" parent="CameraController/CameraTarget/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, -0.00039303303, -0.011966467, 3.0777566)
 
 [node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget"]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.060735583, 0.018742085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06729066, -0.6088033)
 current = true
 
 [node name="Character" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera_controller", "player")]
@@ -1289,7 +1286,7 @@ shape = SubResource("BoxShape3D_hhak6")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Character/JumpReference"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-collision_mask = 134
+collision_mask = 2
 spring_length = 10.0
 
 [node name="Area3D" type="Node3D" parent="Character/JumpReference/SpringArm3D"]

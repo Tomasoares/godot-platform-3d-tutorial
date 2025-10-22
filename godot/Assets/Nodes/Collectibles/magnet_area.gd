@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	if !magnet:
 		return
 		
-	exponential_weight += 0.008
+	exponential_weight += 0.012
 	coin.global_position = lerp(coin.global_position, target.global_position, exponential_weight)
 	
 	if coin.get_overlapping_bodies().has(target):
