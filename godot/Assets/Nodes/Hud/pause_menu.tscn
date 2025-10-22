@@ -350,10 +350,10 @@ horizontal_alignment = 1
 
 [node name="VolumeSlider" type="HSlider" parent="OptionsMenu"]
 layout_mode = 0
-offset_left = 569.0
-offset_top = 298.0
-offset_right = 703.0
-offset_bottom = 314.0
+offset_left = 573.0
+offset_top = 274.0
+offset_right = 707.0
+offset_bottom = 290.0
 max_value = 10.0
 
 [node name="VolumeText" type="Label" parent="OptionsMenu/VolumeSlider"]
@@ -371,10 +371,10 @@ horizontal_alignment = 1
 
 [node name="SensibilitySlider" type="HSlider" parent="OptionsMenu"]
 layout_mode = 0
-offset_left = 569.0
-offset_top = 327.0
-offset_right = 703.0
-offset_bottom = 343.0
+offset_left = 573.0
+offset_top = 303.0
+offset_right = 707.0
+offset_bottom = 319.0
 min_value = 2.0
 max_value = 12.0
 value = 2.0
@@ -394,10 +394,10 @@ horizontal_alignment = 1
 
 [node name="InvertXText" type="Label" parent="OptionsMenu"]
 layout_mode = 0
-offset_left = 439.0
-offset_top = 352.0
-offset_right = 563.0
-offset_bottom = 395.0
+offset_left = 443.0
+offset_top = 328.0
+offset_right = 567.0
+offset_bottom = 371.0
 theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_7o4d0")
@@ -414,10 +414,10 @@ offset_bottom = 22.0
 
 [node name="InvertYText" type="Label" parent="OptionsMenu"]
 layout_mode = 0
-offset_left = 439.0
-offset_top = 381.0
-offset_right = 563.0
-offset_bottom = 424.0
+offset_left = 443.0
+offset_top = 357.0
+offset_right = 567.0
+offset_bottom = 400.0
 theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_7o4d0")
@@ -429,6 +429,44 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_left = 122.0
 offset_right = 166.0
+offset_bottom = 24.0
+
+[node name="InvertKeys" type="Label" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 385.0
+offset_right = 576.0
+offset_bottom = 428.0
+theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7o4d0")
+theme_override_font_sizes/font_size = 16
+text = "Invert Keys:"
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="OptionsMenu/InvertKeys"]
+layout_mode = 0
+offset_left = 113.0
+offset_right = 157.0
+offset_bottom = 24.0
+
+[node name="FullscreenText" type="Label" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 412.0
+offset_right = 576.0
+offset_bottom = 455.0
+theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7o4d0")
+theme_override_font_sizes/font_size = 16
+text = " Fullscreen:"
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="OptionsMenu/FullscreenText"]
+layout_mode = 0
+offset_left = 113.0
+offset_right = 157.0
 offset_bottom = 24.0
 
 [node name="GoBackButton" type="Button" parent="OptionsMenu"]
@@ -457,4 +495,6 @@ metadata/_custom_type_script = "uid://h2m2rof2cyaq"
 [connection signal="value_changed" from="OptionsMenu/SensibilitySlider" to="OptionsMenu" method="_on_sensibility_slider_value_changed"]
 [connection signal="toggled" from="OptionsMenu/InvertXText/InvertXToggle" to="OptionsMenu" method="_on_invert_x_toggle_toggled"]
 [connection signal="toggled" from="OptionsMenu/InvertYText/CheckButton" to="OptionsMenu" method="_on_check_button_toggled"]
+[connection signal="toggled" from="OptionsMenu/InvertKeys/CheckButton" to="OptionsMenu" method="_on_invert_keys_check_button_toggled"]
+[connection signal="toggled" from="OptionsMenu/FullscreenText/CheckButton" to="OptionsMenu" method="_on_fullscreen_button_toggled"]
 [connection signal="pressed" from="OptionsMenu/GoBackButton" to="OptionsMenu" method="_on_go_back_button_pressed"]

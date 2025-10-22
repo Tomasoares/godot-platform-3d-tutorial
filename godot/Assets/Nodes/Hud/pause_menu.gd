@@ -64,3 +64,7 @@ func _on_pause_menu_visibility_changed() -> void:
 
 func hide_pause_menu() -> void:
 	$PauseMenu.visible = false
+
+
+func _on_fullscreen_check_button_toggled(toggled_on: bool) -> void:
+	Global.toggle_fullscreen(toggled_on)

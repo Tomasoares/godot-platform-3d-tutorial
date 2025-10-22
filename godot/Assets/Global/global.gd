@@ -131,3 +131,78 @@ func get_game_volume() -> float:
 func set_game_volume(value: float) -> void:
 	var master_bus_index := AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_volume_db(master_bus_index, linear_to_db(value / VOLUME_MULTIPLIER))
+	
+func is_game_fullscreen() -> bool:
+	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	
+#DEFAULT KEY MAPPING
+var default_cam_left := InputMap.action_get_events("cam_left").duplicate(true)
+var default_cam_right := InputMap.action_get_events("cam_right").duplicate(true)
+var default_cam_adjust := InputMap.action_get_events("cam_adjust_key").duplicate(true)
+
+var default_move_up := InputMap.action_get_events("move_up").duplicate(true)
+var default_move_left := InputMap.action_get_events("move_left").duplicate(true)
+var default_move_right := InputMap.action_get_events("move_right").duplicate(true)
+var default_move_down := InputMap.action_get_events("move_down").duplicate(true)
+	
+#INVERTED KEY MAPPING
+var inverted_cam_left := InputMap.action_get_events("cam_left_inverted").duplicate(true)
+var inverted_cam_right := InputMap.action_get_events("cam_right_inverted").duplicate(true)
+var inverted_cam_adjust := InputMap.action_get_events("cam_adjust_inverted").duplicate(true)
+
+var inverted_move_up := InputMap.action_get_events("move_up_inverted").duplicate(true)
+var inverted_move_left := InputMap.action_get_events("move_left_inverted").duplicate(true)
+var inverted_move_right := InputMap.action_get_events("move_right_inverted").duplicate(true)
+var inverted_move_down := InputMap.action_get_events("move_down_inverted").duplicate(true)
+
+func toggle_fullscreen(value: bool) -> void:
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)	
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		
+func is_key_map_inverted() -> bool:
+	return InputMap.action_get_events("cam_left") == inverted_cam_left
+	
+func toggle_key_map_inversion(toggle: bool) -> void:
+	erase_current_mapping()
+	
+	if toggle:
+		print("inverted mapping")
+		map_all_inputs("cam_left", inverted_cam_left)
+		map_all_inputs("cam_right", inverted_cam_right)
+		map_all_inputs("cam_adjust_key", inverted_cam_adjust)
+		
+		map_all_inputs("move_up", inverted_move_up)
+		map_all_inputs("move_left", inverted_move_left)
+		map_all_inputs("move_right", inverted_move_right)
+		map_all_inputs("move_down", inverted_move_down)
+		
+	else:
+		map_all_inputs("cam_left", default_cam_left)
+		map_all_inputs("cam_right", default_cam_right)
+		map_all_inputs("cam_adjust_key", default_cam_adjust)
+		
+		map_all_inputs("move_left", default_move_left)
+		map_all_inputs("move_right", default_move_right)
+		map_all_inputs("move_up", default_move_up)
+		map_all_inputs("move_down", default_move_down)
+		
+func erase_current_mapping() -> void:
+	action_erase_event("cam_left")
+	action_erase_event("cam_right")
+	action_erase_event("cam_adjust_key")
+	
+	action_erase_event("move_left")
+	action_erase_event("move_right")
+	action_erase_event("move_up")
+	action_erase_event("move_down")
+	
+func action_erase_event(action: String) -> void:
+	var events := InputMap.action_get_events(action)
+	for event in events:
+		InputMap.action_erase_event(action, event)
+
+func map_all_inputs(action: String, events: Array[InputEvent]) -> void:
+	for event in events:
+		InputMap.action_add_event(action, event)

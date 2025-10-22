@@ -27,6 +27,8 @@ func _on_visibility_changed() -> void:
 	$VolumeSlider.value = Global.get_game_volume()
 	$InvertXText/InvertXToggle.button_pressed = Global.invert_x
 	$InvertYText/CheckButton.button_pressed = Global.invert_y
+	$FullscreenText/CheckButton.button_pressed = Global.is_game_fullscreen()
+	$InvertKeys/CheckButton.button_pressed = Global.is_key_map_inverted()
 
 func _on_sensibility_slider_value_changed(value: float) -> void:
 	Global.set_current_sensitivity($SensibilitySlider.value)
@@ -37,5 +39,11 @@ func _on_invert_x_toggle_toggled(toggled_on: bool) -> void:
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	Global.invert_y = toggled_on
 
+func _on_fullscreen_button_toggled(toggled_on: bool) -> void:
+	Global.toggle_fullscreen(toggled_on)
+
 func _on_volume_slider_value_changed(value: float) -> void:
 	Global.set_game_volume(value)
+
+func _on_invert_keys_check_button_toggled(toggled_on: bool) -> void:
+	Global.toggle_key_map_inversion(toggled_on)
