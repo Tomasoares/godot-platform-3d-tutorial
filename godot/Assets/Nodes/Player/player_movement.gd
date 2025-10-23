@@ -74,7 +74,7 @@ func align_character_with_floor_inclination(inclination: Vector3):
 
 func move(delta: float, input_direction: Vector2) -> void:
 	#Get actual input direction considering camera position
-	var direction: Vector3 = (camera.global_transform.basis * Vector3(input_direction.x, 0, input_direction.y))
+	var direction: Vector3 = (get_camera_reference_basis() * Vector3(input_direction.x, 0, input_direction.y))
 	if direction:
 		var strength = direction.length() * SPEED
 		var direction_normalized = direction.normalized()
@@ -86,10 +86,22 @@ func move(delta: float, input_direction: Vector2) -> void:
 		var jumping := !player.is_on_floor()
 		if jumping:
 			weight = 0.025
-		
 		#apply stopping movement
 		player.velocity.x = lerp(player.velocity.x, move_toward(player.velocity.x, 0, SPEED), weight)
 		player.velocity.z = lerp(player.velocity.z, move_toward(player.velocity.z, 0, SPEED), weight)
+
+func get_camera_reference_basis() -> Basis:# 1. Obtenha a Basis da transformação global da câmera.
+	var z_projection = camera.global_transform.basis.z
+	z_projection.y = 0
+	z_projection = z_projection.normalized()
+
+	var new_basis = Basis()
+	new_basis.z = z_projection	# Novo vetor "para a frente" (horizontalizado)
+	new_basis.y = Vector3.UP	# Novo vetor "para cima" (sempre vertical)
+	new_basis.x = camera.global_transform.basis.x
+	new_basis = new_basis.orthonormalized() # Recalcula o vetor X e garante a Basis correta
+
+	return new_basis
 	
 func bounce() -> void:
 	player.velocity.y = player.JUMP_VELOCITY * 0.85
