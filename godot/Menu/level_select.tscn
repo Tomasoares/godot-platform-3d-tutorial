@@ -29,10 +29,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_orldi")
 
 [node name="Level1" type="Button" parent="."]
 layout_mode = 0
-offset_left = 433.0
-offset_top = 352.0
-offset_right = 626.0
-offset_bottom = 411.0
+offset_left = 438.0
+offset_top = 354.0
+offset_right = 631.0
+offset_bottom = 413.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -41,10 +41,10 @@ text = "1"
 
 [node name="Level2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 433.0
-offset_top = 418.0
-offset_right = 626.0
-offset_bottom = 477.0
+offset_left = 438.0
+offset_top = 413.0
+offset_right = 631.0
+offset_bottom = 472.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -53,10 +53,10 @@ text = "2"
 
 [node name="Level3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 433.0
-offset_top = 478.0
-offset_right = 626.0
-offset_bottom = 537.0
+offset_left = 438.0
+offset_top = 473.0
+offset_right = 631.0
+offset_bottom = 532.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -65,10 +65,10 @@ text = "3"
 
 [node name="Level4" type="Button" parent="."]
 layout_mode = 0
-offset_left = 598.0
-offset_top = 352.0
-offset_right = 791.0
-offset_bottom = 411.0
+offset_left = 603.0
+offset_top = 354.0
+offset_right = 796.0
+offset_bottom = 413.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -77,10 +77,10 @@ text = "4"
 
 [node name="Level5" type="Button" parent="."]
 layout_mode = 0
-offset_left = 598.0
-offset_top = 418.0
-offset_right = 791.0
-offset_bottom = 477.0
+offset_left = 603.0
+offset_top = 413.0
+offset_right = 796.0
+offset_bottom = 472.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -89,10 +89,10 @@ text = "5"
 
 [node name="Level6" type="Button" parent="."]
 layout_mode = 0
-offset_left = 598.0
-offset_top = 478.0
-offset_right = 791.0
-offset_bottom = 537.0
+offset_left = 603.0
+offset_top = 473.0
+offset_right = 796.0
+offset_bottom = 532.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -101,10 +101,10 @@ text = "6"
 
 [node name="Level7" type="Button" parent="."]
 layout_mode = 0
-offset_left = 763.0
-offset_top = 352.0
-offset_right = 956.0
-offset_bottom = 411.0
+offset_left = 768.0
+offset_top = 354.0
+offset_right = 961.0
+offset_bottom = 413.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -113,10 +113,10 @@ text = "7"
 
 [node name="Level8" type="Button" parent="."]
 layout_mode = 0
-offset_left = 763.0
-offset_top = 418.0
-offset_right = 956.0
-offset_bottom = 477.0
+offset_left = 768.0
+offset_top = 413.0
+offset_right = 961.0
+offset_bottom = 472.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -125,10 +125,10 @@ text = "8"
 
 [node name="Level9" type="Button" parent="."]
 layout_mode = 0
-offset_left = 763.0
-offset_top = 478.0
-offset_right = 956.0
-offset_bottom = 537.0
+offset_left = 768.0
+offset_top = 473.0
+offset_right = 961.0
+offset_bottom = 532.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -138,9 +138,9 @@ text = "9"
 [node name="Level10" type="Button" parent="."]
 layout_mode = 0
 offset_left = 933.0
-offset_top = 352.0
+offset_top = 354.0
 offset_right = 1126.0
-offset_bottom = 411.0
+offset_bottom = 413.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -150,9 +150,9 @@ text = "10"
 [node name="Level11" type="Button" parent="."]
 layout_mode = 0
 offset_left = 933.0
-offset_top = 418.0
+offset_top = 413.0
 offset_right = 1126.0
-offset_bottom = 477.0
+offset_bottom = 472.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
@@ -162,9 +162,9 @@ text = "11"
 [node name="Level12" type="Button" parent="."]
 layout_mode = 0
 offset_left = 933.0
-offset_top = 478.0
+offset_top = 473.0
 offset_right = 1126.0
-offset_bottom = 537.0
+offset_bottom = 532.0
 scale = Vector2(0.76, 0.76)
 theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
 theme_override_fonts/font = ExtResource("2_xip3m")
