@@ -22,7 +22,6 @@ SoundManager="*res://Assets/Global/sound_manager.tscn"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]
