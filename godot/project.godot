@@ -202,7 +202,7 @@ move_right_inverted={
 
 [physics]
 
-3d/default_gravity=50.0
+3d/default_gravity=42.0
 
 [rendering]
 

@@ -7,7 +7,7 @@ var alive := true
 var target_final_speed := Vector3()
 
 const SPEED = 10
-const JUMP_VELOCITY = 18
+const JUMP_VELOCITY = 16
 
 func _physics_process(delta: float) -> void:
 	$MovementScript.handle_movement(delta, alive)
