@@ -6,7 +6,7 @@ func _ready() -> void:
 	visible = false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("go_back"):
+	if event.is_action_pressed("go_back") or event.is_action_pressed("ui_cancel"):
 		visible = false
 		main_menu.visible = true
 
