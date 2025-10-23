@@ -1,22 +1,19 @@
-class_name CameraController
-extends Node
+extends Node3D
 
 @export var camera_controller : Node3D
-@export var spring_arm: SpringArm3D
 @export var player : CharacterBody3D
-@export var armature : Node3D
 
 var weight = 0.05
 var rotation_set := false
 var continuous_rotation : float
-
-func init() -> void:
-	pass
 	
 func handle_camera(delta: float) -> void:
-	$AutomaticCamera.handle_camera(delta)
-	$ManualCamera.handle_camera(delta)
-	$FollowPlayer.follow()
+	initialize_continuous_rotation()
+	
+	if no_camera_input():
+		move_automatic_camera()
+	else:
+		stop_automatic_camera()
 	
 func initialize_continuous_rotation() -> void:
 	if !rotation_set:

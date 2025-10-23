@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://dtcumeuqke5t2"]
+[gd_scene load_steps=41 format=4 uid="uid://dtcumeuqke5t2"]
 
 [ext_resource type="Script" uid="uid://dufge67n4qv5h" path="res://Assets/Nodes/Player/player.gd" id="1_hhak6"]
 [ext_resource type="Script" uid="uid://46eq8jsgx55t" path="res://Assets/Nodes/Player/player_movement.gd" id="2_3icjf"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://0oiqft73w80p" path="res://Assets/Nodes/Player/player_animation.gd" id="3_bv27b"]
 [ext_resource type="Script" uid="uid://ycow27d0b4jk" path="res://Assets/Nodes/Player/spring_arm_3d.gd" id="3_ccqfp"]
 [ext_resource type="Texture2D" uid="uid://j3nl4ef08tq4" path="res://Assets/Models/game-robot-001_robot_mix_decals.png" id="4_ibsny"]
+[ext_resource type="Script" uid="uid://c5v7x1iybdoco" path="res://Assets/Nodes/Player/camera_follow.gd" id="4_sx0x4"]
+[ext_resource type="Script" uid="uid://dmhw6jrd26xd1" path="res://Assets/Nodes/Player/manual_camera.gd" id="5_lin46"]
+[ext_resource type="Script" uid="uid://do8sf8pgp7m0f" path="res://Assets/Nodes/Player/automatic_camera.gd" id="6_epnx2"]
 [ext_resource type="Script" uid="uid://f8mq648pi7in" path="res://Assets/Nodes/Player/attack_collision.gd" id="6_ibsny"]
 [ext_resource type="Script" uid="uid://8jb365ro3hrc" path="res://Assets/Nodes/Player/jump_collision.gd" id="7_vj5hy"]
 [ext_resource type="Script" uid="uid://dou5mo0fgqe6k" path="res://Assets/Nodes/Player/block_collision.gd" id="9_wk7ca"]
@@ -1127,6 +1130,22 @@ transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000004, -0.0003930330
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06729066, -0.6088033)
 current = true
 
+[node name="FollowPlayer" type="Node3D" parent="CameraController" node_paths=PackedStringArray("player", "camera_controller")]
+script = ExtResource("4_sx0x4")
+player = NodePath("../../Character")
+camera_controller = NodePath("..")
+
+[node name="ManualCamera" type="Node3D" parent="CameraController" node_paths=PackedStringArray("camera_controller", "spring_arm", "armature")]
+script = ExtResource("5_lin46")
+camera_controller = NodePath("..")
+spring_arm = NodePath("../CameraTarget/SpringArm3D")
+armature = NodePath("../../Character/Armature")
+
+[node name="AutomaticCamera" type="Node3D" parent="CameraController" node_paths=PackedStringArray("camera_controller", "player")]
+script = ExtResource("6_epnx2")
+camera_controller = NodePath("..")
+player = NodePath("../../Character")
+
 [node name="Character" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera_controller", "player")]
 collision_mask = 190
 script = ExtResource("2_bv27b")
@@ -1295,7 +1314,7 @@ script = ExtResource("11_jgk6w")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 10)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Character/JumpReference/SpringArm3D/Shadow"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, 0.8, 0, -0.8, -3.4969112e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_jgk6w")
 
 [connection signal="area_entered" from="Character/AttackCollision" to="Character/AttackCollision" method="_on_area_entered"]
