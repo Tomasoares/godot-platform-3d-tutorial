@@ -124,13 +124,13 @@ func get_final_camera_sensitivity_for_mouse_x() -> float:
 	var sensitivity = (1000 - camera_sensitivity) + 2000
 	if invert_x:
 		sensitivity *= -1
-	return sensitivity
+	return sensitivity / 3
 	
 func get_final_camera_sensitivity_for_mouse_y() -> float:
 	var sensitivity = (1000 - camera_sensitivity) + 2000
 	if invert_y:
 		sensitivity *= -1
-	return sensitivity
+	return sensitivity / 3
 	
 func get_game_volume() -> float:
 	var master_bus_index := AudioServer.get_bus_index("Master")

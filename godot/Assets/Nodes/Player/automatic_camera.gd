@@ -29,7 +29,7 @@ func should_enable_automatic_camera() -> void:
 		
 	var player_velocity_xz = Vector3(player.velocity.x, 0, player.velocity.z)
 	var current_speed = player_velocity_xz.length()
-	use_automatic_camera = current_speed > 9.0
+	use_automatic_camera = current_speed > 8.5
 
 func player_made_camera_input() -> bool:
 	var input_dir := Input.get_vector("cam_left", "cam_right", "cam_up", "cam_down")
