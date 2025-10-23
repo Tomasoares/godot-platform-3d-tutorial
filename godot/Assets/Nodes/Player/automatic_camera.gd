@@ -25,7 +25,6 @@ func should_enable_automatic_camera() -> void:
 		
 	var player_velocity_xz = Vector3(player.velocity.x, 0, player.velocity.z)
 	var current_speed = player_velocity_xz.length()
-	print(player.velocity.length())
 	use_automatic_camera = current_speed > 8.0
 
 func player_made_camera_input() -> bool:
