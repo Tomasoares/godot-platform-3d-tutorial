@@ -1,0 +1,212 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3bqu7wuelcvj"]
+
+[ext_resource type="Script" uid="uid://c6srnov85uy5x" path="res://Menu/level_select.gd" id="1_078cu"]
+[ext_resource type="FontFile" uid="uid://h8berclpli6i" path="res://Assets/Fonts/SyneMono-Regular.ttf" id="2_xip3m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orldi"]
+bg_color = Color(0, 0, 0, 0.44313726)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_078cu")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 272.0
+offset_right = 1109.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_orldi")
+
+[node name="Level1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 352.0
+offset_right = 626.0
+offset_bottom = 411.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="Level2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 418.0
+offset_right = 626.0
+offset_bottom = 477.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "2"
+
+[node name="Level3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 478.0
+offset_right = 626.0
+offset_bottom = 537.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "3"
+
+[node name="Level4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 598.0
+offset_top = 352.0
+offset_right = 791.0
+offset_bottom = 411.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "4"
+
+[node name="Level5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 598.0
+offset_top = 418.0
+offset_right = 791.0
+offset_bottom = 477.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "5"
+
+[node name="Level6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 598.0
+offset_top = 478.0
+offset_right = 791.0
+offset_bottom = 537.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "6"
+
+[node name="Level7" type="Button" parent="."]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 352.0
+offset_right = 956.0
+offset_bottom = 411.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "7"
+
+[node name="Level8" type="Button" parent="."]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 418.0
+offset_right = 956.0
+offset_bottom = 477.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "8"
+
+[node name="Level9" type="Button" parent="."]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 478.0
+offset_right = 956.0
+offset_bottom = 537.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "9"
+
+[node name="Level10" type="Button" parent="."]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 352.0
+offset_right = 1126.0
+offset_bottom = 411.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "10"
+
+[node name="Level11" type="Button" parent="."]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 418.0
+offset_right = 1126.0
+offset_bottom = 477.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "11"
+
+[node name="Level12" type="Button" parent="."]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 478.0
+offset_right = 1126.0
+offset_bottom = 537.0
+scale = Vector2(0.76, 0.76)
+theme_override_colors/font_outline_color = Color(0.32, 0.20266666, 0, 0.92156863)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "12"
+
+[node name="SelectLevelText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 296.0
+offset_right = 1080.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 32
+text = "Select Level"
+horizontal_alignment = 1
+
+[node name="GoBackText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 585.0
+offset_right = 1107.0
+offset_bottom = 624.0
+theme_override_colors/font_color = Color(1, 0.8786667, 0.48000002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xip3m")
+theme_override_font_sizes/font_size = 24
+text = "Esc/Circle: Go Back"
+horizontal_alignment = 2
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="Level5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="Level7" to="." method="_on_level_7_pressed"]
+[connection signal="pressed" from="Level8" to="." method="_on_level_8_pressed"]
+[connection signal="pressed" from="Level9" to="." method="_on_level_9_pressed"]
+[connection signal="pressed" from="Level10" to="." method="_on_level_10_pressed"]
+[connection signal="pressed" from="Level11" to="." method="_on_level_11_pressed"]
+[connection signal="pressed" from="Level12" to="." method="_on_level_12_pressed"]

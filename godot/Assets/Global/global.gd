@@ -63,6 +63,15 @@ func begin_game() -> void:
 	init_lives(5)
 	go_to_next_level()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+func play_individual_level(scene : String) -> void:
+	current_scene_order.push_front("res://Menu/menu.tscn")
+	init_lives(5)
+	begin_level()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().paused = false
+	get_tree().change_scene_to_file(scene)
+	
 
 func go_to_main_menu() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
