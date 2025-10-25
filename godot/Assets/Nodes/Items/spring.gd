@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var potency := 1.5
+@export var potency := 1.55
 
 func _on_action_area_area_entered(area: Area3D) -> void:
 	var player_collision := area as AttackCollision
